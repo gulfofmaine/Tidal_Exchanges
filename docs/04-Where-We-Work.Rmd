@@ -1,0 +1,87 @@
+# Where We Work
+
+The research team here at GMRI uses a diverse set of tools/software in support of their research efforts. While we encourage the use of whatever tool is best for the research question at hand, we encourage these standards when working to set an even standard for everyone.
+
+## Communication
+
+GMRI uses a number of software communication channels that help us stay connected and share information effectively. Each of these tools has its own tradeoffs and community standards associated with them. These norms are not set in stone but may be helpful for setting expectations.
+
+### Email
+
+**What is it?**
+GMRI currently uses microsoft outlook express as its primary email software. As an employee we each have a gmri.org email address through this platform to use for work-related communications.
+
+**How we use it**
+Email is the primary form of communication both internally and with external partners. 
+
+
+**Expectations**
+There is an expectation that emails will be checked and responded to in a reasonable amount when appropriate.
+
+### Slack
+
+**What is it?**
+[Slack]() is a workplace communication software that allows for conversations around specific conversation topics to be organized as #channels. Slack also supports direct instant-messaging to individuals or groups of individuals.
+
+**How we use it**
+Slack is primarily used as a means to communicate in a more informal manner than email.
+
+**Expectations**
+While slack is widely used across the organization it is not an expectation that it be open during work or checked routinely. For pressing matters it is best to send an email. Please be respectful of others with regards to messaging when outside normal working hours.
+
+
+### Zoom
+
+**What is it?**
+Zoom is the primary video conferencing software used here at GMRI.
+
+**How we use it**
+Zoom meetings are used for any meeting where visual presentation or screen sharing is needed.
+
+**Expectations**
+When participating in a zoom call it is common practice to mute yourself when not speaking, and to give your full attention to the meeting.
+
+
+### Github Repositories
+
+**what is it?**
+
+
+**How we use it**
+[Github](www.github.com) is increasingly becoming an important tool for communicating around research projects. Through the use of project-specific repositories and the use of github issues it is possible to track progress and communication around specific topics as work is completed. While we see big potential for github's project tracking capabilities we understand that this may not be the preferred platform for everyone, and we encourage whichever channel of communication one prefers.
+
+**Expectations**
+
+
+
+
+
+## Data
+
+
+### Local Data
+
+### Cloud Storage (Box)
+
+### Box: Project Data
+
+### Box: RES_Data
+
+### Confidential Data
+
+
+
+## Code
+
+### R-Projects
+
+### Github
+
+### Python
+
+### Code Reviews
+
+### Packages
+
+### Docker/Cloud Computing
+

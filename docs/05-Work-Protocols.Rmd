@@ -1,0 +1,34 @@
+# Work Protocols 
+
+
+
+
+## Documentation
+
+### Data Documentation
+
+
+### Data Organization
+
+
+### Code Documentation
+
+
+### Project Organization
+
+
+
+## Project Types
+
+
+### Publicly Acccessible
+
+
+### External Collaboration
+
+
+### Confidential
+
+
+### Continuous Deployments
+
