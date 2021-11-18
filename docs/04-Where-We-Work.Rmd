@@ -4,12 +4,12 @@ The research team here at GMRI uses a diverse set of tools/software in support o
 
 ## Communication
 
-GMRI uses a number of software communication channels that help us stay connected and share information effectively. Each of these tools has its own tradeoffs and community standards associated with them. These norms are not set in stone but may be helpful for setting expectations.
+GMRI uses a number of software communication channels that help us stay connected and share information effectively. Each of these tools has its own trade-offs and community standards associated with them. These norms are not set in stone but may be helpful for setting expectations.
 
-### Email
+### Microsoft Outlook Email
 
 **What is it?**
-GMRI currently uses microsoft outlook express as its primary email software. As an employee we each have a gmri.org email address through this platform to use for work-related communications.
+GMRI currently uses Microsoft outlook express as its primary email software. As an employee we each have a gmri.org email address through this platform to use for work-related communications.
 
 **How we use it**
 Email is the primary form of communication both internally and with external partners. 
@@ -56,7 +56,7 @@ When participating in a zoom call it is common practice to mute yourself when no
 
 
 
-## Data
+## Data Platforms
 
 
 ### Local Data
@@ -71,15 +71,13 @@ When participating in a zoom call it is common practice to mute yourself when no
 
 
 
-## Code
+## Code Platforms
 
 ### R-Projects
 
+### Python / Jupyter
+
 ### Github
-
-### Python
-
-### Code Reviews
 
 ### Packages
 

@@ -3,9 +3,11 @@
 
 ## GMRI Employee Code of Conduct
 
+[Link to GMRI's code of conduct]()
 
 ## Research Code of Conduct
 
+Some detail of the research team's specific conduct expectations
 
 ## Authorship Communications
 

@@ -1,34 +1,28 @@
 # Work Protocols 
 
 
-
-
 ## Documentation
 
-### Data Documentation
 
+### Data Documentation
 
 ### Data Organization
 
 
-### Code Documentation
-
-
 ### Project Organization
 
+### Code Documentation
+
+### Code Reviews
 
 
 ## Project Types
 
-
 ### Publicly Acccessible
-
 
 ### External Collaboration
 
-
 ### Confidential
-
 
 ### Continuous Deployments
 
