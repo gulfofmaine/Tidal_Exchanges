@@ -1,0 +1,15 @@
+book_filename: "Tidal_Exchanges"
+language:
+  ui:
+    chapter_name: "Chapter: "
+rmd_files: 
+  - "index.Rmd"
+  - "docs/01-Intro.Rmd"
+  - "docs/02-Lab-Culture.Rmd"
+  - "docs/03-Code-of-Conduct.Rmd"
+  - "docs/04-Where-We-Work.Rmd"
+  - "docs/05-Work-Protocols.Rmd"
+  - "docs/06-Onboarding.Rmd"
+  - "docs/07-Offboarding.Rmd"
+output_dir: "docs"
+rmd_subdir: FALSE

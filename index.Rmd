@@ -1,0 +1,34 @@
+---
+title: "GMRI Research Team Protocols"
+author: "Gulf of Maine Research Institute: Research Team"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+biblio-style: apalike
+link-citations: yes
+github-repo: gulfofmaine/Tidal_Exchanges
+description: "This is a minimal example of using the bookdown package to write documentation for a repository using Rmarkdown and bookdown. The output format for this example is bookdown::gitbook. Chapters are written individually using Rmarkdown"
+---
+
+```{r}
+gmRi::use_gmri_style_rmd(css_file = "gmri_rmarkdown.css")
+```
+
+# GMRI Research Team Lab Manual
+
+This document was created through joint communication across the research team at the [Gulf of Maine Research Institute](www.gmri.org). Its purpose is to express our shared standards for how we aspire to work and collaborate. The intention is for this documentation to articulate our positions on promoting an inclusive lab culture, and our philosophies around best practices.
+
+This document will evolve over time to align with our needs/goals. The content for this book was developed as part of our group's participation in the [2021 Openscapes Champions Program](https://www.openscapes.org/), and borrows inspiration from the [Fay Lab Manual](https://thefaylab.github.io/lab-manual/).
+
+
+
+```{r, out.width = "25%", echo = FALSE}
+knitr::include_graphics("https://allisonhorst.github.io/img/openscapes_hex_badge.png")
+```
+<br>
+*[We're proud Openscapes Champions!](https://openscapes.org)*
+
+----
+
+<a rel='license' href='http://creativecommons.org/licenses/by/4.0/'><img alt='Creative Commons License' style='border-width:0' src='https://i.creativecommons.org/l/by/4.0/88x31.png' /></a>&nbsp;&nbsp;This lab manual is licensed under a <a rel='license' href='http://creativecommons.org/licenses/by/4.0/'>Creative Commons Attribution 4.0 International License</a>.
