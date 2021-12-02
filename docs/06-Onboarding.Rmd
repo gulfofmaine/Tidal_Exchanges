@@ -1,1 +1,39 @@
 # Onboarding 
+
+### Communication
+
+#### HR support
+  
+- hr@gmri.org email for HR support
+- Bobbi-Jo Hutchins is the Payroll and Benefits Specialist. She is a great resource for HR related questions. She can be          contacted at hr@gmri.org, bhutchins@gmri.org, (207) 228-1643, or on slack.
+- Bobbi has office hours every Monday-Thursday from 1-2pm. Zoom link for office hours is https://gmri-org.zoom.us/j/91304989626?pwd=VUJweU8vSkhKV21XQVkyMkNOaHMyZz09            
+(Office hours info last updated on 10/25/21)
+- Joining the #Benefitspopcorn on Slack is a good resource
+- Paylocity and the GMRI Intranet also have HR relation information
+
+####  IT support
+  
+- Tim Reich or Nick Georghiou. Questions or formal help requests can be directed to help@gmri.org, or smaller/quicker questions by contacting Tim or Nick on slack.
+
+### GMRI resources
+
+#### Intranet
+
+- GMRI’s Intranet is a website managed through sharepoint in which the purpose is to work towards the strategic plan goal of “investing in technology that empowers staff with skills and tools for innovation, collaboration, and efficiency”.
+- GMRI’s Intranet is a central location for GMRI internal information.
+- Ways to access the Intranet include:
+  - This link: https://gmri365.sharepoint.com/sites/GMRIHome
+  - From office365, clicking on the app launcher in the top left hand corner, clicking “all apps”, then scrolling down to the “GMRI Intranet” tab.
+- GMRI Intranet has information on:
+  - Previously recorded staff meeting presentations
+  - GMRI interactive phone list
+  - Staff events
+  - Benefit documents
+  - GMRI policies
+  - Resources for hiring managers
+  - IT documentation
+  - Application cheat sheets and tips
+  - Forms you may need to fill out
+  - Web links to Paylocity, Zoom (specific room zoom links), benefit portal links
+  - Has search engine for fast and effective search
+
