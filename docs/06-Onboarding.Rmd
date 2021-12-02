@@ -21,6 +21,7 @@ General GMRI onboarding
 Lab onboarding
 
 - Read through Lab Manual
+- Make a GitHub account if you don't have one already
 - Once the above is complete, check that you have access to:
   - Okta - GMRI's single sign-on
   - Paylocity - HR documents
@@ -37,6 +38,15 @@ Lab onboarding
   - gmri-research-team
 - Email listserves to be on
   - GMRIStaff
+- Meetings to know about: ALL
+  - Bi-weekly all staff meetings (Mondays)
+  - Bi-weekly research staff meetings (Mondays)
+  - Tidal exchange meetings - joint meetings about open data science
+- Meetings to know about: Lisa's lab
+  - Bi-weekly lab meetings (Thursdays)
+  - Individual meetings on alternating week from lab meeting
+- Meetings to know about: Kathy's lab
+  - 
 - Other useful knowledge
   - During COVID times the back door has a doorbell if you need to be let in during business hours
 
