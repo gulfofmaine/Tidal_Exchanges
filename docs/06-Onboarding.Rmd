@@ -1,5 +1,40 @@
 # Onboarding 
 
+Here are a few items to take care of when you join the lab!
+
+## To Do List
+
+- Read through Lab Manual
+- Complete the "Gulf of Maine Research Institute Employee Orientation Checklist" 
+  - Get a copy from your supervisor
+  - Covers general onboarding, building access, computer setup, HR, ect.
+- Talk to help desk to get access to:
+  -  Building 
+  -  Parking pass
+  -  Wifi
+  -  Computers/tech you need for your research
+- Once the above is complete, check that you have access to:
+  - Okta - GMRI's single sign-on
+  - Paylocity - HR documents
+  - Outlook - email
+  - Zoom - web conferencing
+  - Slack - team messaging
+  - Box - cloud storage
+  - GMRI Intranet - HR and other general information
+  - 
+- Recommended slack channels
+  - benefitspopcorn
+  - general
+  - random
+  - gmri-research-team
+- Email listserves to be on
+  - GMRIStaff
+- Other useful knowledge
+  - During COVID times the back door has a doorbell if you need to be let in during business hours
+
+
+
+
 ### Communication
 
 #### HR support
