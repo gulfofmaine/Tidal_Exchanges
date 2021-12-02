@@ -21,7 +21,6 @@ Here are a few items to take care of when you join the lab!
   - Slack - team messaging
   - Box - cloud storage
   - GMRI Intranet - HR and other general information
-  - 
 - Recommended slack channels
   - benefitspopcorn
   - general
