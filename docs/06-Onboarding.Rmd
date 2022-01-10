@@ -22,6 +22,8 @@ Lab onboarding
 
 - Read through Lab Manual
 - Make a GitHub account if you don't have one already
+- Make sure you have access permission to folders on Box 
+  -  ResData contains shared data and files that you may need access to, but there may be other lab- or project-specific folders you will need to be added to
 - Once the above is complete, check that you have access to:
   - Okta - GMRI's single sign-on
   - Paylocity - HR documents
