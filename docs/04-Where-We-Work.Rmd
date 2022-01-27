@@ -45,7 +45,7 @@ When participating in a zoom call it is common practice to mute yourself when no
 ### Github Repositories
 
 **what is it?**
-
+A Git repository is the .git/ folder inside of a project. This folder tracks all changes ever made to the files you make to your project, which allows you to go back and view previous verions if you ever need access to them/ need to revert to a previous version. It is also important to note that if you delete the .git/ folder, then you delete your project’s history.
 
 **How we use it**
 [Github](www.github.com) is increasingly becoming an important tool for communicating around research projects. Through the use of project-specific repositories and the use of github issues it is possible to track progress and communication around specific topics as work is completed. While we see big potential for github's project tracking capabilities we understand that this may not be the preferred platform for everyone, and we encourage whichever channel of communication one prefers.
