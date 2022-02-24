@@ -1,0 +1,222 @@
+---
+output: html_document
+---
+
+# Reusing code & reproducible examples
+
+Rule of 3: Once you have 3 or more replications of the code (i.e. you have copied and pasted different versions for your own use or shared with others) think about turning the code into a reprodicible example that can be more readily reused. 
+
+## How does the GMRI research team share code currently (February 2022)?
+
+- Invited to box folder - scripts & data together, downside = separate from how things shared
+- Send Rmd - includes code +  notes
+- GMRI package - functions in 1 location: https://github.com/gulfofmaine/gmri
+  - Has box functions & Rmd template
+  - ggplot with GMRI colors
+- Email 
+- Slack code snippet - share functions quickly 
+- Rarely fork from GitHub
+- It can be hard to keep track of things others are working on when their code is not on GitHub (decreases likelihood of seeing their work in passing) 
+  - When working independently, may be less likely to use GitHub 
+  star/follow projects
+  - also have list of what people are working on
+- Next step: Practice making and sharing R functions to force ourselves to share work in a documented/reproducible manner
+  - Learn how to make, update, and add functions to R packages
+  - Good way to practice using GitHub
+
+
+## What code or projects would benefit from being more reproducible?
+
+- Spatial stuff (e.g. SST)
+  - make a wishlist of functionality
+  - Functions for spring/fall 
+  - FVCOM, OISST, OISST preprocessed data from box folder commonly used
+  - Shape file clipping = useful code to reuse
+- Making maps
+- Next step: Talk through very specific vs. generalizable functions
+  - Standardized data format (column names, dates)
+    - e.g. spatially grided temperature data with specific format
+- Next step: Talk through function building
+  - How to include a sanity check for inputs at the very beginning of a function and then a “sorry, we expect your data to be in this format” error/warning when things don’t line up
+  - Figure out how to check types and format of input arguments
+  - When to write a function with if statements to handle a range of data inputs vs. when to expect input data in a specific format 
+  
+## Shared resources that may be of interest
+
+- https://royalsocietypublishing.org/doi/full/10.1098/rsta.2020.0069
+
+## Making code more reproducible
+Think about:
+
+- Who is going to reuse your code? - future you, other lab members?
+- Where will your code users look for code? - GitHub, specific Box folder?
+- How will your code be reused? - as an example to modify, rerun exactly?
+
+### Creating functions
+Pros:
+
+- Easy to set up
+- Good for code where the process/analysis is the same but you expect inputs to change (e.g. pulling data from a database but changing the years of data pulled between uses)
+- Lots of nice options to document as part of an R package (e.g. via [roxygen comments](https://r-pkgs.org/man.html))
+- Easy to share with others (code is packaged, you just need to source the function and provide arguments)
+
+Cons:
+
+- Potential to duplicate development effort if function is not stored in a central location
+- Documentation is not required so there is still room for uninformative/missing documentation
+
+Resources:
+- https://r4ds.had.co.nz/functions.html
+
+When building functions include: 
+1) An informative function name
+2) Arguments in the call to `function()` Setting arguments equal to NULL increases the likelihood that your function breaks if you didn't explicitly provide all of the required information, which may be desirable when sharing code. You may also set default values for arguments. 
+3) The code you want to reuse
+4) The object or value to return from your function (this could also be a list). 
+
+#### Function simple example:
+```{r}
+calcSquare <- function(input = NULL){
+  squared <- input*input
+  return(squared)
+}
+```
+
+### Create a reproducible example with `reprex`
+`reprex` is an R package to quickly make reproducible examples to share.
+
+Pros:
+
+- Easy to format code to share via GitHub, StackOverflow, Slack, or to add to presentation slides
+- Can include session info to aid in reproducibility across machines/time
+
+Cons:
+
+- Doesn't provide a standard way to store examples
+- Doesn't automatically include data in the example (see `dput` option below)
+
+Load package independently or as part of the tidyverse
+```{r}
+library("reprex") # also part of the tidyverse
+```
+
+#### `reprex` simple example:
+1) Copy a section of code:
+```{r}
+# This is my example code
+input = 5
+squared <- input*input
+print(squared)
+```
+2) Run `reprex()` - in the knitted document this will return an error that the clipboard is not available
+```{r}
+reprex()
+```
+3) Once the console says "Rendered reprex is on the clipboard" paste the rendered output where you want to share it. In RStudio you can see the HTML preview in the Viewer window (it will not look great in the knitted document, see the source Rmd file for example).
+
+---------------------
+``` r
+# This is my example code
+input = 5
+squared <- input*input
+print(squared)
+#> [1] 25
+```
+
+<sup>Created on 2022-02-18 by the [reprex package](https://reprex.tidyverse.org) (v0.3.0)</sup>
+---------------------
+
+The `venue` argument can be used to customize the format of the code returned by `reprex()`
+
+- `reprex(venue = "R")` returns runable R code (in my example this is exactly the same as what I copied)
+
+The `si` argument will include session info if set to TRUE.
+
+#### `reprex` with `dput` simple example:
+Load a dataset
+```{r}
+library(palmerpenguins)
+```
+Example code using dataset to copy
+```{r}
+mean(penguins$bill_length_mm, na.rm = TRUE)
+```
+
+Copying the above code generates the following example, but does not include any of the data required to run it (in this case it would be easy to load the palmerpenguins package and data but this may not be the case for all examples):
+
+---------------------
+``` r
+mean(palmerpenguins::penguins$bill_length_mm, na.rm = TRUE)
+#> [1] 43.92193
+```
+
+<sup>Created on 2022-02-18 by the [reprex package](https://reprex.tidyverse.org) (v0.3.0)</sup>
+---------------------
+
+Use `dput()` to print the penguins dataset in a way that is easily copied and pasted. You can then add this to the `reprex` output to obtain both the code and corresponding data.
+```{r}
+dput(palmerpenguins::penguins$bill_length_mm)
+```
+
+### Share reproducible examples via gists 
+Gists are tiny Git repositories that are fast to set up, and are designed to share chunks of code. You can fork, clone, and subscribe to gists and gists may be public or secret. 
+
+Pros:
+
+- Fast to set up
+- Include lots of the GitHub features that make it easy to collaborate and share
+- Flexibile format
+- Public and secret sharing options
+
+Cons:
+
+- Requires some comfort with GitHub
+- You must be signed into a GitHub account in order for the gist to be associated with you
+
+To use gists:
+
+1) Make a reproducible example to share
+2) Log into GitHub so the gist is associated with your account
+3) Navigate to the [gist home page](https://gist.github.com/) 
+4) Paste your reproducible example and select secret or public OR upload a file.
+    - To upload a file click add file or drag the file from your desktop to the gist box. Rmd files won't automatically render, but changing the .Rmd extension to .md in the filename box on the upper left will allow your nicely formatted file to render and should pop up with a preview option. Just double check the formatting before you create the gist.
+
+You can see the secret gist I generated [here](https://gist.github.com/ahart1/6c44c5e1c3f93fff4d7832456559dac4). Look at other public gists [here](https://gist.github.com/discover). For example, [this gist](https://gist.github.com/BurKing/973f563a321572cdf78dd8843275ba11) was rendered from a markdown file.
+
+#### `gistr` lets you interact with gists in R
+If you want to view or create gists directly from R this package looks useful. The only downside is a bit of setup to connect `gistr` to your GitHub profile.
+```{r}
+# install.packages("gistr")
+library(gistr)
+```
+
+
+## Try it yourself
+Process to repeat:
+```{r}
+library(palmerpenguins)
+
+penguins %>% 
+  dplyr::filter(year == 2007) %>% 
+  dplyr::summarise(mean_body_mass = mean(body_mass_g,na.rm=TRUE))
+
+```
+
+Turn this code into a function that lets you change the year by year:
+```{r}
+
+```
+
+Use `reprex` to generate an example
+```{r}
+
+```
+
+Create a gist- practice by mentioning someone in your gist or cloning their public gist.
+
+
+
+
+
+
+
