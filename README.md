@@ -17,11 +17,10 @@ That documentation can be found here: [GMRI Research Team Lab Manual](https://gu
  * [Tidal Exchanges - Shared Communication (Github Issues)](https://github.com/gulfofmaine/Tidal_Exchanges/issues)
 
 
+<img src="https://allisonhorst.github.io/img/openscapes_hex_badge.png" width="200" alt = "Openscapes hex badge">
 
-```{r, out.width = "25%", echo = FALSE}
-knitr::include_graphics("https://allisonhorst.github.io/img/openscapes_hex_badge.png")
-```
 <br>
-*[We're proud Openscapes Champions!](https://openscapes.org)*
+
+* [We're proud Openscapes Champions!](https://openscapes.org)
 
 ----
