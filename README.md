@@ -28,7 +28,7 @@ Beginning on April 7, 2022 this group will meet the first Thursday of each month
 
 * 03/24/22: Creating functions in R ([template here](Templates/R_Function_Template.R)) - Adam and Amanda
 * 04/07/22: Building R packages - Adam and Amanda
-* 05/05/22: TBD
+* 05/05/22: Apply skills from last 2 meetings and get comfortable with GitHub - Adam and Amanda
 * 06/02/22: TBD
 * 07/07/22: TBD
 * 08/04/22: TBD
