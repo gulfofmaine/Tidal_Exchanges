@@ -48,3 +48,15 @@ confidential
 continuous-deployments
 onboarding
 offboarding
+who-to-contact
+where-to-find-things
+finding-support
+connecting-virtually
+creating-community
+career-development
+conferences
+courses
+microsoft-outlook-email
+data-platforms
+code-platforms
+python-jupyter
