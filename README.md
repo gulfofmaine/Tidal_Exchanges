@@ -29,7 +29,8 @@ Beginning on April 7, 2022 this group will meet the first Thursday of each month
 * 03/24/22: Creating functions in R ([template here](Templates/R_Function_Template.R)) - Adam and Amanda
 * 04/07/22: Building R packages - Adam and Amanda
 * 05/05/22: Apply skills from last 2 meetings and get comfortable with GitHub - Adam and Amanda
-* 06/02/22: TBD
+* 06/02/22: Tips & tools to make coding & open data science more accessible - Adam ([autogenerating tabs in Rmarkdown](https://interludeone.com/posts/2022-03-04-programmatically-generate-tabs-in-rmarkdown/?panelset=dream&panelset1=torgersen2![image](https://user-images.githubusercontent.com/23203046/171659296-369e3231-4fb3-48f6-a2e1-85b2bf38655e.png)
+)), Jamie ([extracting in-text citations](https://github.com/Jamie-Behan/Extract_in-text_citations)), Jerelle (Rmarkdown visual editor). 
 * 07/07/22: TBD
 * 08/04/22: TBD
 * 09/01/22: TBD
