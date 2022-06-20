@@ -272,7 +272,7 @@ data.table::data.table(
 
 ```{r}
 # library(readr) # If the readr package is not loaded, uncomment and run this line of code
-penguinsCSV <- read_csv("penguins_data.csv")
+penguinsCSV <- read_csv(here::here("Intro_to_R", "Data/penguins_data.csv"))
 ```
 
 The text below the code gives you information about what happened when you ran the code. Sometimes you'll get an error or warning message, but in this case, the output is telling you what variable types it assigned to each column.
@@ -388,7 +388,7 @@ Here are a few functions to help you take a first look at your data quickly:
 
 ![](Figures/DataExplorerReport.png)
 
-```{r, message = FALSE}
+```{r, results='hide'}
 # install.package("DataExplorer")
 # library(DataExplorer) # Uncomment if package isn't loaded in R
 DataExplorer::create_report(penguins)
