@@ -143,8 +143,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # First, we will install 2 packages using code. You only need to do this step once. After tidyverse and DataExplorer are installed, you can delete this line of code or comment it out using # (will not be run)
 
-install.packages("tidyverse")
-install.packages("DataExplorer")
+#install.packages("tidyverse")
+#install.packages("DataExplorer")
 
 # Second, you must load the installed packages into your library (working RStudio session) to be able to use it in the code. This must be done in each new R script or RMarkdown document you write.
 
@@ -174,7 +174,7 @@ getwd()
 Use `setwd()` to change your working directory to the location where your data is stored:
 
 ```{r}
-setwd("/Users/yourusername/folderwithdata")
+#setwd("/Users/yourusername/folderwithdata")
 ```
 
 ### Load data by copying and pasting (use `datapasta` package)
@@ -186,8 +186,8 @@ setwd("/Users/yourusername/folderwithdata")
 Pick `Paste as tribble`:
 
 ```{r}
-# install.packages("datapasta", repos = c(mm = "https://milesmcbain.r-universe.dev", getOption("repos"))) # Uncomment to install most up-to-date version of package
-# library("datapasta") # Uncomment if not already loaded
+ #install.packages("datapasta", repos = c(mm = "https://milesmcbain.r-universe.dev", getOption("repos"))) # Uncomment to install most up-to-date version of package
+ library("datapasta") # Uncomment if not already loaded
 
 tibble::tribble(
                                  ~Breed, ~Affectionate.With.Family, ~Good.With.Young.Children, ~Good.With.Other.Dogs, ~Shedding.Level, ~Coat.Grooming.Frequency, ~Drooling.Level, ~Coat.Type, ~Coat.Length, ~Openness.To.Strangers, ~Playfulness.Level, ~`Watchdog/Protective.Nature`, ~Adaptability.Level, ~Trainability.Level, ~Energy.Level, ~Barking.Level, ~Mental.Stimulation.Needs,
@@ -270,7 +270,7 @@ data.table::data.table(
 ### Load data from a CSV (.csv) file
 
 ```{r}
-# library(readr) # If the readr package is not loaded, uncomment and run this line of code
+ library(readr) # If the readr package is not loaded, uncomment and run this line of code
 penguinsCSV <- read_csv("penguins_data.csv")
 ```
 
@@ -389,7 +389,7 @@ Here are a few functions to help you take a first look at your data quickly:
 
 ```{r}
 # install.package("DataExplorer")
-# library(DataExplorer) # Uncomment if package isn't loaded in R
+ library(DataExplorer) # Uncomment if package isn't loaded in R
 DataExplorer::create_report(penguins)
 ```
 
