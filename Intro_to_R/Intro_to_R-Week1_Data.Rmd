@@ -1,6 +1,6 @@
 ---
 title: "Intro to R"
-author: "LGCarlson"
+author: "L.G.Carlson, M.Barajas, A.Hart"
 date: "6/1/2020"
 output: html_document
 editor_options: 
@@ -116,7 +116,7 @@ Most functions can take several arguments. If you don't specify a required argum
 
 The defaults represent standard values that the author of the function specified as being "good enough in standard cases". An example would be what symbol or color to use in a plot.
 
-To get more information about a function and its arguments use the `help()` function to pull up documentation in the Help tab (bottom right). The argument is any function from base or a package you have installed.
+To get more information about a function and its arguments use the `help()` function to pull up documentation in the 'Help' tab (bottom right). The argument is any function from base R or a package you have installed.
 
 ```{r}
 help(getwd)
@@ -128,14 +128,14 @@ All analysis in R uses functions, lets start by looking at a few that can help a
 
 Packages contain groups of related functions and come pre-installed (i.e. functions and packages that are part of base R) or can be installed in two ways:
 
-1.  Use the Packages tab and select the Install option to install a specific package.
+1.  Use the 'Packages' tab and select the 'Install' option to install a specific package.
 
 ![](Figures/InstallPackages.png)
 
 2.  Install using code:
 
-```{r setup}
-# You can also write documentation (non-code) in the code chunk, but you must # it out (will turn green)
+```{r setup, eval = FALSE}
+# You can also write documentation (non-code) in the code chunk, but you must # it out (will turn green when viewed in RStudio)
 
 # This is the setup chunk (chunk names go after the language in the brackets)
 
@@ -143,23 +143,29 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # First, we will install 2 packages using code. You only need to do this step once. After tidyverse and DataExplorer are installed, you can delete this line of code or comment it out using # (will not be run)
 
+<<<<<<< HEAD
 #install.packages("tidyverse")
 #install.packages("DataExplorer")
+=======
+install.packages("tidyverse")
+install.packages("DataExplorer")
+```
+>>>>>>> 073b09069aef56b2e99fa5914301950686f7b36a
 
+```{r}
 # Second, you must load the installed packages into your library (working RStudio session) to be able to use it in the code. This must be done in each new R script or RMarkdown document you write.
 
 library(tidyverse)
 library(DataExplorer)
-
 ```
 
-*tidyverse* is actually a collection of packages. The packages installed by tidyverse (tidyr, dplyr, readr, purrr, stringr, forcats, ggplot, and more!) contain the most useful (and most widely used) functions in R, outside of those functions which come as part of the base R package (you don't need to install this). We will cover many of these functions later on.
+`tidyverse` is actually a collection of packages. The packages installed by tidyverse (tidyr, dplyr, readr, purrr, stringr, forcats, ggplot, and more!) contain the most useful (and most widely used) functions in R, outside of those functions which come as part of the base R package (you don't need to install this). We will cover many of these functions later on.
 
-*DataExplorer* is a package that provides useful summaries for data exploration which we will use later on.
+`DataExplorer` is a package that provides useful summaries for data exploration which we will use later on.
 
 ## Reading in data
 
-How data is stored determines how we can read it into R for use in our analysis. Often public data sets are available through R packages or as Rdata (files with ".rds" extension), while our own data sets are saved as Excel or CSV files. Fore one-time analyses and quick testing it is sometimes possible to copy and paste data into R. Here we outline paths to load some of the more common data formats that we use, but know that R has lots of options to load other types of data (e.g. large data files are often pulled from a SQL databases and climate data is often stored as a NetCDF file).
+How data is stored determines how we can read it into R for use in our analysis. Often public data sets are available through R packages or as Rdata (files with ".rds" extension), while our own data sets are saved as Excel or CSV files. For one-time analyses and quick testing it is sometimes possible to copy and paste data into R. Here we outline paths to load some of the more common data formats that we use, but know that R has lots of options to load other types of data (e.g. large data files are often pulled from a SQL databases and climate data is often stored as a NetCDF file).
 
 -   Use the `<-` to assign something to an object that will be saved in your environment, this is equivalent to `=` in R but people get defensive about this so it is best to do what feels right for you and try not to debate it with others.
 
@@ -173,8 +179,13 @@ getwd()
 
 Use `setwd()` to change your working directory to the location where your data is stored:
 
+<<<<<<< HEAD
 ```{r}
 #setwd("/Users/yourusername/folderwithdata")
+=======
+```{r, eval=FALSE}
+setwd("/Users/yourusername/folderwithdata")
+>>>>>>> 073b09069aef56b2e99fa5914301950686f7b36a
 ```
 
 ### Load data by copying and pasting (use `datapasta` package)
@@ -270,8 +281,13 @@ data.table::data.table(
 ### Load data from a CSV (.csv) file
 
 ```{r}
+<<<<<<< HEAD
  library(readr) # If the readr package is not loaded, uncomment and run this line of code
 penguinsCSV <- read_csv("penguins_data.csv")
+=======
+# library(readr) # If the readr package is not loaded, uncomment and run this line of code
+penguinsCSV <- read_csv(here::here("Intro_to_R", "Data/penguins_data.csv"))
+>>>>>>> 073b09069aef56b2e99fa5914301950686f7b36a
 ```
 
 The text below the code gives you information about what happened when you ran the code. Sometimes you'll get an error or warning message, but in this case, the output is telling you what variable types it assigned to each column.
@@ -279,11 +295,11 @@ The text below the code gives you information about what happened when you ran t
 Now that you've run this code chunk, you'll be able to see "penguinsCSV" in your environment (top right). Let's see what the data looks like inline.
 
 ```{r}
-# To look at the entire dataset, just rerun the "penguins" object or type it into the console and hit enter. You may also double click the data boject in the Environment tab
+# To look at the entire dataset, just rerun the "penguins" object or type it into the console and hit enter. You may also double click the data object in the 'Environment' tab
 penguinsCSV
 ```
 
-R Markdown gives you a preview of the dataset and allows you to look through the whole dataset using the "Next" button at the bottom of the table. Markdown also shows you what type of data is contained in each column below the column name (i.e., <chr> or <dbl>).
+R Markdown gives you a preview of the dataset and allows you to look through the whole dataset using the 'Next' button at the bottom of the table. Markdown also shows you what type of data is contained in each column below the column name (i.e., <chr> or <dbl>).
 
 ### Load data from an Excel (.xls or .xlsx) file
 
@@ -387,13 +403,13 @@ Here are a few functions to help you take a first look at your data quickly:
 
 ![](Figures/DataExplorerReport.png)
 
-```{r}
+```{r, results='hide'}
 # install.package("DataExplorer")
  library(DataExplorer) # Uncomment if package isn't loaded in R
 DataExplorer::create_report(penguins)
 ```
 
-`summary()` is a function that will automatically count the number of occurences for qualitative data and will provide the range, median, mean and innerquartile range for quantitative data.
+`summary()` is a function that will automatically count the number of occurrences for qualitative data and will provide the range, median, mean and innerquartile range for quantitative data.
 
 ```{r}
 summary(penguins)
@@ -435,7 +451,7 @@ class(penguins)
 
 What is the argument (or input) for class()?
 
-We used "penguins" here, but you could use any object in your r environment.
+We used "penguins" here, but you could use any object in your R environment.
 
 `str()` is a function that allows you to look at the structure of a dataframe (or other type of data object in R). It's always a good idea to use str() to get an idea of what types of values are included in your data.
 
@@ -455,9 +471,15 @@ An important aspect of working with R objects is knowing how to "index" them. In
 
 Here are the most common types of index you'll use:
 
--   
+-   `[n]`: Use brackets to pick the nth item in a data object
 
--   \$: access columns of a dataframe
+    -   For vectors provide a single number `[n]` or name of the item
+
+    -   For tibbles, dataframes, and matrices provide a row and column numbers or names `[nrow, ncol]`
+
+-   `$`: access columns of a dataframe, or items in a list using `$` notation
+
+Use brackets to index a vector or dataframe
 
 ```{r}
 # access value 2 in a vector
@@ -481,8 +503,8 @@ Columns using brackets:
 ```{r}
 # access column 1 in a dataframe (number goes after the comma)
 my_df[,1]
-
-my_df
+# Or index column by name
+my_df[,"Org"] 
 ```
 
 You can also access columns by name rather than number by using the dollar sign indexing. If you type a dataframe's name followed by a \$, R will suggest the column names. Because rows aren't named, you can do the same thing for them.
@@ -501,11 +523,11 @@ class(bill_lengths)
 head(bill_lengths,20)
 ```
 
-**head** is a new function that returns the first "n" values in an object. The primary argument is any R object. The default for n=10, but here I specified 20.
+`head` is a new function that returns the first "n" values in an object. The primary argument is any R object. The default for n=6, but here I specified 20.
 
 ### Intro to the tidyverse
 
-For this section, we will begin using functions from the tidyverse packages. To connect these functions, we will use an operator called the pipe that looks like this %>%
+For this section, we will begin using functions from the tidyverse packages. To connect these functions, we will use an operator called the pipe that looks like this `%>%`
 
 This operator will forward a value, or the result of an expression, into the next function call/expression. For instance a function to check the structure of data can be written as:
 
@@ -525,7 +547,7 @@ penguins
 
 ### Data wrangling
 
-**filter** - Often we want to work with particular parts of data sets. The filter function from package dplyr allows us to filter (or subset) based on a specific set of criteria
+`filter()` - Often we want to work with particular parts of data sets. The `filter` function from package `dplyr` allows us to filter (or subset) based on a specific set of criteria
 
 ```{r}
 # filter by an exact condition, in this case, keep only species == "Gentoo"    *this is more often used for categorical variables but can be used on numeric variables as well (for example bill_length_mm == 46.1)
@@ -536,7 +558,7 @@ penguins %>% filter(species == "Gentoo")
 
 \*Note, you can also write the function this way:
 
-filter(penguins,species == "Gentoo")
+`filter(penguins,species == "Gentoo")`
 
 But the pipe operator becomes useful when running multiple functions in a row
 
@@ -558,7 +580,7 @@ penguins %>% filter(island != "Torgersen")
 penguins %>% filter(!is.na(sex))
 ```
 
-**mutate** - adds new variables and preserves existing ones (unless you overwrite their name)
+`mutate()` - adds new variables and preserves existing ones (unless you overwrite their name)
 
 ```{r}
 # Perhaps we want to flipper length (in mm) to cm, we could add a new column to do this while doing math on the old column
@@ -568,7 +590,9 @@ penguins %>% mutate(flipper_length_cm = flipper_length_mm*0.1)
 
 ### Calculating summary statistics
 
-**group_by** - group by one or more variables **summarize** - reduce multiple values down to a single value
+`group_by()` - group by one or more variables
+
+`summarize()` - reduce multiple values down to a single value
 
 Calculate the mean bill length by species
 
@@ -622,7 +646,7 @@ Do you agree with the outputs?
 
 Sometimes functions have additional arguments that change their behavior. If you don't specify additional arguments or options, R will use the default settings.
 
-For the **sort** function we just learned, there are actually two arguments. Let's see what they are by opening the documentation using help().
+For the `sort` function we just learned, there are actually two arguments. Let's see what they are by opening the documentation using help().
 
 ```{r}
 help(sort)
@@ -640,4 +664,10 @@ You don't have to specify the argument name (i.e., x= or decreasing=), so long a
 sort(my_vector, TRUE)
 ```
 
-## 
+## Next week:
+
+-   More data wrangling
+
+-   Statistical tests & models
+
+-   Plots & maps
