@@ -2,7 +2,7 @@
 title: "Intro to R"
 author: "L.G.Carlson, M.Barajas, A.Hart"
 date: "6/1/2020"
-output: html_document
+output: pdf_document
 editor_options: 
   chunk_output_type: inline
 ---
@@ -289,7 +289,7 @@ R Markdown gives you a preview of the dataset and allows you to look through the
 ### Load data from an Excel (.xls or .xlsx) file
 
 ```{r}
-# install.package("readxl")
+# install.packages("readxl")
 # library("readxl") # Uncomment if package not already loaded
 
 sheet1 <- readxl::read_excel(here::here("Intro_to_R/Data/testExcel.xlsx"), sheet = 1) # Pick sheet by number order
@@ -311,6 +311,7 @@ practice # Print the data you loaded to screen
 Typically all you need to do to load data from an R package is to load the package and call the named data set.
 
 ```{r}
+# install.packages("palmerpenguins")
 # Load the palmerpenguins package
 library(palmerpenguins)
 # Take a look at the data set from this R package
