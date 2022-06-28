@@ -11,10 +11,8 @@ editor_options:
 ## Goals:
 
 1\. Describe
-<!--# This is probably review of data exploration from week 1 Add exploratory plots here, intro to ggplot here rather than later -->
 
 2\. Wrangle
-<!--# This is probably review of tidyverse from week 1, need to add penguins.csv data to GitHub so this code runs -->
 
 3\. Visualize variation
 
@@ -139,110 +137,12 @@ hist() function
 values. The argument must be a numeric vector (a column of data is a
 vector).
 
-```{r}
-hist(penguins_complete$body_mass_g)
-```
 
 This and many other plots can be created using base R functions, but
 `ggplot()` provides a more consistent framework to generate and combine
 many different plots using tidy data as an input.
 
-<!--# Add histogram created with ggplot - pull code from later in this document -->
-
-By looking at these plot, can you guess what the mean might be? We can
-calculate it and check.
-
-```{r}
-mean(penguins_complete$body_mass_g)
-```
-
-However, we might want to investigate each species a little more
-specifically. Based on what little I know about penguins, I am think
-that one species is a quite a bit bigger (thus probably weighs more)
-than the others.
-
-<!--# Replace boxplot with ggplot -->
-
-**boxplot** is a function which allows you to produce box-and-whisker
-plots of the given (grouped) values
-
-The argument is a formula which specifies which grouping variable you
-want to divide a numeric vector by.
-
-```{r}
-boxplot(penguins_complete$body_mass_g ~ penguins_complete$species)
-```
-
-We can use group_by and summarise to calculate group means.
-
-```{r}
-penguins_complete %>% 
-  group_by(species) %>% 
-  summarize(mean_mass = mean(body_mass_g))
-
-```
-
-We could also guess that sexual dimorphism would cause variation is mass
-between the sexes (i.e., males are typically larger).
-
-Let's look at those differences for Adelie penguins only.
-
-```{r}
-boxplot(adelie_penguins$body_mass_g ~ adelie_penguins$sex)
-```
-
-We can use group_by and summarise to calculate group means here as well.
-
-```{r}
-adelie_penguins %>% 
-  group_by(sex) %>% 
-  summarize(mean_mass = mean(body_mass_g), sd=sd(body_mass_g))
-
-```
-
-## Step 4: Visualize covariation
-
-Now we may want to evaluate covariation between numeric variables, for
-example, we could examine the relationship between flipper length and
-body mass. What kind of relationship would you expect?
-
-<!--# Probably want to replace the following with ggplot -->
-
-**plot** is the generic base R plotting function that can be used to
-create scatterplots, line plots, and more
-
-The first argument is the x coordinates of the points in the plot
-
-The second argument is the y coordinates of points in the plot
-
-type = is an argument that tells R which type of plot should be drawn;
-common options are 'p' for points, 'l' for lines, or 'n' for no plotting
-(blank plotting area)
-
-```{r}
-plot(penguins_complete$flipper_length_mm, penguins_complete$body_mass_g, type = "p")
-```
-
-Let's addd some color by species and formatting
-
-```{r}
-plot(penguins_complete$flipper_length_mm, penguins_complete$body_mass_g, type = "n",xlab = "Flipper length (mm)", ylab = "Body mass (g)")
-
-points(penguins_complete$flipper_length_mm[penguins_complete$species == "Adelie"], penguins_complete$body_mass_g[penguins_complete$species == "Adelie"], col = "red")
-
-points(penguins_complete$flipper_length_mm[penguins_complete$species == "Chinstrap"], penguins_complete$body_mass_g[penguins_complete$species == "Chinstrap"], col = "green")
-
-points(penguins_complete$flipper_length_mm[penguins_complete$species == "Gentoo"], penguins_complete$body_mass_g[penguins_complete$species == "Gentoo"], col = "blue")
-
-legend(220, 3800, legend=c("Adelie", "Chinstrap", "Gentoo"),
-       col=c("red", "green", "blue"),  pch = 1,   bty = "n")
-
-```
-
-### ggplot
-
-Now, I want to show how you'd make the same plots using the ggplot
-syntax. For this, you'll need the ggplot2 package which is loaded as
+For this, you'll need the ggplot2 package which is loaded as
 part of the tidyverse.
 
 There are 4 aspects of ggplots you need to know about:
@@ -293,23 +193,71 @@ ggplot(data=penguins_complete, aes(x=body_mass_g)) + geom_histogram(bins=8)
 # delete or change the bins argument to see what happens
 ```
 
+By looking at these plot, can you guess what the mean might be? We can
+calculate it and check.
+
+```{r}
+mean(penguins_complete$body_mass_g)
+```
+
+However, we might want to investigate each species a little more
+specifically. Based on what little I know about penguins, I am think
+that one species is a quite a bit bigger (thus probably weighs more)
+than the others.
+
+```{r}
+
+ggplot(data=penguins_complete, aes(x=species, y=body_mass_g)) + geom_boxplot() + stat_boxplot(geom ='errorbar', width = 0.5)
+
+```
+
+We can use group_by and summarise to calculate group means.
+
+```{r}
+
+penguins_complete %>% 
+  group_by(species) %>% 
+  summarize(mean_mass = mean(body_mass_g))
+
+```
+
+We could also guess that sexual dimorphism would cause variation is mass
+between the sexes (i.e., males are typically larger).
+
+Let's look at those differences for Adelie penguins only.
+
 If you think about the way a boxplot is formatted, the categories are
 typically on the x axis and the numeric variables range on the y.
 
 ```{r}
-boxplot(adelie_penguins$body_mass_g ~ adelie_penguins$sex)
 
 ggplot(data=adelie_penguins, aes(x=sex, y=body_mass_g)) + geom_boxplot() + stat_boxplot(geom ='errorbar', width = 0.5)
+
 ```
+
+We can use group_by and summarise to calculate group means here as well.
+
+```{r}
+adelie_penguins %>% 
+  group_by(sex) %>% 
+  summarize(mean_mass = mean(body_mass_g), sd=sd(body_mass_g))
+
+```
+
+## Step 4: Visualize covariation
+
+Now we may want to evaluate covariation between numeric variables, for
+example, we could examine the relationship between flipper length and
+body mass. What kind of relationship would you expect?
 
 ggplot excels at multi-variable plots as compared to base graphics.
 
 Here's the basic scatterplot:
 
 ```{r}
-plot(penguins_complete$flipper_length_mm, penguins_complete$body_mass_g, type = "p")
 
 ggplot(data=penguins_complete, aes(x=flipper_length_mm, y=body_mass_g)) + geom_point()
+
 ```
 
 And the more advanced versions
@@ -318,23 +266,9 @@ Note: ggplot will automatically assign colors, but you can manually
 change them as well (will discuss later)
 
 ```{r}
-plot(penguins_complete$flipper_length_mm, penguins_complete$body_mass_g, type = "n",xlab = "Flipper length (mm)", ylab = "Body mass (g)")
-
-points(penguins_complete$flipper_length_mm[penguins_complete$species == "Adelie"], penguins_complete$body_mass_g[penguins_complete$species == "Adelie"], col = "red")
-
-points(penguins_complete$flipper_length_mm[penguins_complete$species == "Chinstrap"], penguins_complete$body_mass_g[penguins_complete$species == "Chinstrap"], col = "green")
-
-points(penguins_complete$flipper_length_mm[penguins_complete$species == "Gentoo"], penguins_complete$body_mass_g[penguins_complete$species == "Gentoo"], col = "blue")
-
-legend(220, 3800, legend=c("Adelie", "Chinstrap", "Gentoo"),
-       col=c("red", "green", "blue"),  pch = 1,   bty = "n")
-
-
-
-
-# ggplot version:
 
 ggplot(data = penguins_complete, aes(x=flipper_length_mm, y=body_mass_g,color=species)) + geom_point()
+
 ```
 
 `geom_line()` will create a line graph (connect each datapoint with a
