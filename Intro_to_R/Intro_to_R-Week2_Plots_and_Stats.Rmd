@@ -1,6 +1,6 @@
 ---
 title: "Intro to R - Week 2"
-author: "LGCarlson"
+author: "LGCarlson, M.Barajas, A.Hart"
 date: "6/1/2020"
 output: html_document
 editor_options: 
@@ -41,8 +41,8 @@ library(wesanderson)
 # You should already have this package installed
 library(tidyverse)
 
-# You will have to change the "working directory" to the location where you saved the data
-penguins<-read_csv("C:/Users/lcarlson/Box/RWorkshops/2021/penguins_data.csv")
+# Load package containign pdenguine data
+library(palmerpenguins)
 ```
 
 ## Step 1: Describe
@@ -105,8 +105,6 @@ table(penguins$flipper_length_mm)
 
 ## Step 2: Wrangle
 
-<!--# Add tibble/tidy data here so we have something to work with for visualizing -->
-
 Let's get rid of any individuals with an NA in the sex or body_mass_g
 columns and save that to a new dataframe.
 
@@ -117,7 +115,7 @@ Then, let's also create a dataset which contains only Adelie penguins by
 using the filter function.
 
 ```{r}
-penguins_complete<-penguins %>% 
+penguins_complete <- penguins %>% 
   filter(!is.na(body_mass_g)) %>% 
   filter(!is.na(sex))
 
@@ -137,8 +135,9 @@ hist() function
 
 <!--# Use histogram to talk about base R plots -->
 
-`hist()` - This function computes a histogram of the given data values.
-The argument must be a numeric vector (a column of data is a vector).
+`hist()` - This base R function computes a histogram of the given data
+values. The argument must be a numeric vector (a column of data is a
+vector).
 
 ```{r}
 hist(penguins_complete$body_mass_g)
@@ -384,7 +383,110 @@ ggplot(data = penguins_complete, aes(x=flipper_length_mm, y=body_mass_g,color=se
   labs(x="Flipper length (mm)", y="Body mass (g)", color="Sex")
 ```
 
+### More plotting features to know
+
+There are lots of great packages and tools to add nice plot color
+palettes, including those that are colorblind friendly. Some of our
+favorites include:
+
+-   [ColorBrewer](https://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3)
+    has lots of options for high-contrast and colorblind friendly color
+    palettes
+
+-   [`viridis`](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html)
+    is a nice package with colorblind friendly color palettes that are
+    easy to use for both continuous and discrete data
+
+-   There are lots of cool tools like the
+    [`imgpalr`](https://github.com/leonawicz/imgpalr) package that make
+    it easy to pull colors for a custom color palette (can be good for
+    presentations), but if you go this route always be sure to check
+    that your plot features show up in grayscale and are colorblind
+    friendly (the [`cvdPlot()` function from the
+    `colorBlindness`](https://cran.r-project.org/web/packages/colorBlindness/vignettes/colorBlindness.html)
+    package is a nice way to check quickly).
+
+-   Just for fun, there are pre-made color palettes for many of Wes
+    Anderson's movies in the
+    [`wesanderson`](https://github.com/karthik/wesanderson) package.
+
 ## Step 5: Model
+
+## What is a model?
+
+**A representation for a purpose:**
+
+-   Classify events
+
+-   Untangle multiple influences
+
+-   Assess strength of evidence
+
+-   Identify patterns in data
+
+-   Develop & test hypotheses
+
+-   Inform predictions
+
+Distributional tests help test the hypothesis that your data was sampled
+from the hypothesized distribution (here the hypothesized distribution
+is the model).
+
+Statistical models describe relationships between the data used to build
+them and can be used to evaluate hypotheses about these relationships
+(e.g. does a relationship exist, does it have a directional trend,
+ect.). These models are a special type of mathematical model which are
+informed by data. They incorporate uncertainty and randomness
+
+Why do we create models?
+
+1.  Explanation -- we care about understanding the form of our model, in
+    particular, quantifying relationships between the response and
+    explanatory variables
+
+2.  Prediction -- we don't care so much about how our model arises, only
+    that it does a good job predicting the response based on the
+    explanatory variables
+
+### Model nomenclature:
+
+-   Variability/spread - refers to how spread out a set of data is
+
+-   Response variable/outcome variable -- variable whose variation
+    depends on other variables
+
+-   Explanatory variable/predictor variable -- explains variations in
+    the response variable
+
+-   Covariate -- an explanatory variable that is not primary explanatory
+    variable of interest, but that may be important to the shape of the
+    response variable
+
+### Objects needed for modelling in R:
+
+Data frame -- collection of variables Function -- tool used to build and
+evaluate models Formula -- a way to describe how you want to relate
+variables to each other
+
+A formula contains the response variable seperated by a tilde \~ from
+the explanatory variable
+
+For example:
+
+lm(body_mass_g \~ flipper_length_mm, data = adelie_data)
+
+In English: "Body mass as a function of flipper length" "Body mass given
+flipper length"
+
+### Steps of model design:
+
+1.  Get dataset
+2.  Specify response and explanatory variables of interest
+3.  Select a model architecture i.e., linear model: lm()
+4.  Fit/train a model
+5.  Evaluate the model
+
+\*decisions the modeler makes have an impact on the results
 
 ## t-tests
 
@@ -559,70 +661,6 @@ island_mod<-lm(adelie_penguins$body_mass_g ~ adelie_penguins$island)
 plot(island_mod)
 ```
 
-## What is a model?
-
-**A representation for a purpose** \* Identify patterns in data
-<!--# test & develop hypotheses, inform predictions, should this section preceed t-tests and ANOVA?-->
-
--   Classify events
-
--   Untangle multiple influences
-
--   Assess strength of evidence
-
-Statistical models are a special type of mathematical model which are
-informed by data. They incorporate uncertainty and randomness
-
-Why do we create models?
-
-1.  Explanation -- we care about understanding the form of our model, in
-    particular, quantifying relationships between the response and
-    explanatory variables
-
-2.  Prediction -- we don't care so much about how our model arises, only
-    that it does a good job predicting the response based on the
-    explanatory variables
-
-### Model nomenclature:
-
--   Variability/spread - refers to how spread out a set of data is
-
--   Response variable/outcome variable -- variable whose variation
-    depends on other variables
-
--   Explanatory variable/predictor variable -- explains variations in
-    the response variable
-
--   Covariate -- an explanatory variable that is not primary explanatory
-    variable of interest, but that may be important to the shape of the
-    response variable
-
-### Objects needed for modelling in R:
-
-Data frame -- collection of variables Function -- tool used to build and
-evaluate models Formula -- a way to describe how you want to relate
-variables to each other
-
-A formula contains the response variable seperated by a tilde \~ from
-the explanatory variable
-
-For example:
-
-lm(body_mass_g \~ flipper_length_mm, data = adelie_data)
-
-In English: "Body mass as a function of flipper length" "Body mass given
-flipper length"
-
-### Steps of model design:
-
-1.  Get dataset
-2.  Specify response and explanatory variables of interest
-3.  Select a model architecture i.e., linear model: lm()
-4.  Fit/train a model
-5.  Evaluate the model
-
-\*decisions the modeler makes have an impact on the results
-
 ## Simple linear regression <!--# May be good to discuss GLMs/GAMs -->
 
 What is the statistical relationship between X and Y? 𝑌=𝑎+𝑏𝑋 where 𝑎 and
@@ -711,7 +749,7 @@ the trendline (green points and line).
 it? *A:*
 
 ```{r}
-ggplot() +    #note that global aes() is blank because we're plotting more than one dataset
+ggplot() +    # note that global aes() is blank because we're plotting more than one dataset
   geom_point(data=adelie_penguins, aes(x=flipper_length_mm, y = body_mass_g), color="black") + 
   geom_point(data=mass_flipper_preds, aes(x=flipper_length_mm, y=predicted_mass), color = "#ABB400") +
   geom_line(data=mass_flipper_preds, aes(x=flipper_length_mm, y=predicted_mass), color = "#ABB400") + 
@@ -884,140 +922,13 @@ ultimately, many decisions are up to you (the modeller)!
 
 ## Mapping
 
-Load in data from github
-
-Filter only Montana schools, remove non-plausible mmr values, and select
-distinct cases
-
-```{r}
-
-measles<-read_csv("https://raw.githubusercontent.com/LGCarlson/tidytuesday/master/data/2020/2020-02-25/measles.csv")
-
-mt_meas<-measles %>% 
-  filter(state == "Montana") %>% 
-  filter(mmr > 0) %>% 
-  distinct(index,state,name,county,enroll,mmr, .keep_all = T)
-
-```
-
 Load in spatial datasets
 
 ```{r}
-# load in world and state sf
-world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf")
-states <- sf::st_as_sf(map("state", plot = FALSE, fill = TRUE))
-
 # load in county data
 load(url("https://github.com/mgimond/ES218/blob/gh-pages/Data/counties48.RData?raw=true"))
 
-# create wesanderson palette 
-pal <- wesanderson::wes_palette("Zissou1", 100, type = "continuous")
 ```
-
-###### County-level processing:
-
--   Seperate ID into state and county names
-
--   Filter only Montana data
-
--   Change the case of "county" so that it matches measles data
-    formatting
-
-```{r}
-mtcounties<-cnty %>% 
-  separate(col=ID, into = c("state","county"),sep = ",", remove = F) %>%    
-  filter(state=="montana") %>%                                       
-  mutate(county = snakecase::to_upper_camel_case(county))   
-```
-
-See what shapefiles are loaded by rnatruralearth:
-
-```{r}
-ggplot(data = world) + geom_sf(fill="blue") +     # plots world data
-  geom_sf(data = states, fill="red")              # plots state boundaries
-```
-
-#### Make a basic map to explore distribution of schools/school sizes throughout the state
-
-```{r, warning=F, message=F,echo=F}
-ggplot(data = world) + geom_sf() +     # plots world data
-  geom_sf(data = states) +             # plots state boundaries
-  geom_sf(data=mtcounties) +           # plots county boundaries
-  coord_sf(xlim = c(min(mt_meas$lng,na.rm = T)-1,max(mt_meas$lng,na.rm = T)+1),
-           ylim = c(min(mt_meas$lat,na.rm = T)-1, max(mt_meas$lat,na.rm = T)+1),expand = FALSE) +
-                                       # sets area of plot
-  geom_point(data=mt_meas, aes(x=lng,y=lat, color = mmr, size=enroll))   # plots datapoints by frame size
-```
-
-#### Summarize data by county
-
-```{r}
-# summarize measles data by county
-mt1<-mt_meas %>% 
-  filter(name != "West Valley School Prek-6") %>%    # extreme outlier, something wrong with this datapoint
-  group_by(county) %>% 
-  mutate(xmt = (xrel + xmed + xper)) %>% 
-  mutate(totalvacc = enroll*(mmr/100)) %>% 
-  mutate(unvacc = enroll-totalvacc) %>% 
-  summarise(mean_mmr=mean(mmr,na.rm = T), sum_exmt = sum(xrel,na.rm = T), total_unvacc = sum(unvacc,na.rm = T)) 
-
-# join summarized measles data to county spatial data
-mt2<-mt1 %>%
-  mutate(round_unvacc = paste(round(mean_mmr,0),"%",sep = "")) %>% 
-  left_join(mtcounties, by = "county") 
-```
-
-```{r}
-
-# create plot of mean mmr vaccination rate by county
-mmrplot<-ggplot(data = world) + geom_sf() + geom_sf(data = states) + geom_sf(data=mtcounties) +
-  geom_sf(data=mt2$geometry, aes(fill=mt2$mean_mmr)) +
-  coord_sf(xlim = c(min(mt_meas$lng,na.rm = T)-1,max(mt_meas$lng,na.rm = T)+1),
-           ylim = c(min(mt_meas$lat,na.rm = T)-1, max(mt_meas$lat,na.rm = T)+1),expand = FALSE) +
-  scale_x_continuous(breaks=seq(-116,-104,4)) + 
-  scale_y_continuous(breaks=seq(43,49,3)) + 
-  scale_fill_gradientn(colours = rev(pal)) +
-  labs(fill="", x="",y="") + 
-  theme(legend.position = c(0.1, 0.2), legend.background = element_blank(), legend.title = element_text(size=10)) + 
-  labs(title="Mean MMR vaccination rate (percent vaccinated)")
-
-
-# create plot of number unvaccinated by county
-unvaccplot<-ggplot(data = world) + geom_sf() + geom_sf(data = states) + geom_sf(data=mtcounties) +
-  geom_sf(data=mt2$geometry, aes(fill=(mt2$total_unvacc))) +
-  coord_sf(xlim = c(min(mt_meas$lng,na.rm = T)-1,max(mt_meas$lng,na.rm = T)+1),
-           ylim = c(min(mt_meas$lat,na.rm = T)-1, max(mt_meas$lat,na.rm = T)+1),expand = FALSE) +
-  scale_x_continuous(breaks=seq(-116,-104,4)) + 
-  scale_y_continuous(breaks=seq(43,49,3)) + 
-  scale_fill_gradientn(colours = pal) +
-  labs(fill="", x="",y="") + 
-  theme(legend.position = c(0.1, 0.2), legend.background = element_blank(), legend.title = element_text(size=10)) + 
-  labs(title="Number unvaccinated by county")
-
-unvaccplot
-```
-
-### Mean MMR vaccination rate (percent vaccinated)
-
-```{r, fig.height=6, fig.width=8, warning=F, message=F,echo=F}
-mmrplot +
-  geom_sf_text(data = mt2$geometry, aes(label = mt2$round_unvacc), size=2.8) + 
-  labs(title="Mean MMR vaccination rate (percent vaccinated)")
-```
-
-#### Counties with most unvaccinated students (top 10 counties)
-
-```{r, echo=F}
-mt1 %>% 
-  filter(mean_mmr>0) %>% 
-  arrange(desc(total_unvacc)) %>% 
-  head(10) 
-
-```
-
-<!--# Do we want to keep the above (nice example of combining data wrangling and plotting? or stick with building a map of the Gulf of Maine -->
-
-Creating maps with `ggplot` follows the same
 
 There are many different ways to generate maps in R, but `ggplot`
 provides a good starting point and uses a structure we are already
@@ -1027,23 +938,35 @@ the plots we've discussed so far that can make mapping difficult:
 1.  Maps often contain multiple layers of data (e.g. your data,
     political boundaries, topography, bathymetry, ect.) & ORDER MATTERS!
 
+    -   We often provide data to the `data` argument of **each map
+        layer** and specify separate aesthetics using the `aes()`
+        argument rather than setting up global plot options by providing
+        this information directly to `ggplot()`
+
 2.  We are generally plotting shapes rather than individual points (e.g.
     polygons or shapefiles)
 
 3.  Over a large enough area we need to account for the curvature of the
-    earth (i.e. pick an appropriate projection)
+    earth (i.e. pick an appropriate cartographic projection)
 
 ### Let's practice by making a map of the Gulf of Maine
 
 Load some additional packages that are useful for mapping:
 
 ```{r}
+# install.packages("tidyverse")
 # library(tidyverse) # Contains ggplot and some useful political boundary shapes
+# install.packages("marmap")
 library(marmap) # Contains NOAA bathymetric data 
+# install.packages("rgdal")
 library(rgdal) # Needed to use marmap
+# install.packages("raster")
 library(raster) # Needed to use marmap
+# install.packages("sf")
 library(sf) # Simple features (sf) is another plotting software in R that can make plots independently or can be used to add map layers in ggplot
+# install.packages("mapdata")
 library(mapdata) # Political boundaries
+# install.packages("ggspatial")
 library(ggspatial) # Helps add map features
 ```
 
@@ -1098,7 +1021,7 @@ ggplot() +
                       breaks = c(0, -50, -100, -200, -300, -400, -500, -5000)) + # Specify custom bathymetric lines to keep
   xlab("Longitude") + # Update axis labels
   ylab("Latitude") +   
-  scale_fill_manual(values =  c("#DEF5E5FF", "#A0DFB9FF", "#54C9ADFF", "#38AAACFF", "#348AA6FF", "#366A9FFF", "#40498EFF"), name = "Depth (m)", labels = c("[0,50)", "[50,100)", "[100, 200)", "[200, 300)", "[300,400)", "[400,500)", "[500,5000)" )) + # Pick specific colors and label them to match the bathymetric lines so we end up with a nice legend
+  scale_fill_manual(values =  c("#DEF5E5FF", "#A0DFB9FF", "#54C9ADFF", "#38AAACFF", "#348AA6FF", "#366A9FFF", "#40498EFF"), name = "Depth (m)", labels = c("[0,50)", "[50,100)", "[100, 200)", "[200, 300)", "[300,400)", "[400,500)", "[500,5000)" )) + # Pick specific colors and label them to match the bathymetric lines so we end up with a nice legend and colors
   coord_sf(xlim = c(-74, -64),  ylim = c(40, 47.3)) + # Trim the map dimensions a bit and fix the horizontal stretch. !!! Change this if you want to zoom in/out on a specific area
   theme_minimal() # Change the background theme, there are lots of options to explore
   
@@ -1106,7 +1029,8 @@ ggplot() +
 
 We could have colored everything with an elevation of 0+ a different
 color, but I didn't care about having a high-resolution coastline so I
-am going to add a lower-resolution coastline next.
+am going to add a lower-resolution coastline next that will cover up the
+white.
 
 ```{r}
 # First I need to load US and Canadian political boundaries from two different sources
@@ -1116,7 +1040,7 @@ US <- st_read(dsn = here::here("Intro_to_R", "Data", "US_shapefile", "cb_2018_us
 
 # Transform coordinates to projected coordinates
 US_trans <- st_transform(US, "+proj=longlat +ellps=WGS84 +datum=WGS84")
-# Be careful to ensure that your projected coordinates match across plots!!!
+# Be careful to ensure that your projected coordinates match across plots otherwise you may plot data outside of your plot window!!!
 
 # head(US) # take a look at the data before and after transforming
 # head(US_trans)
@@ -1124,6 +1048,8 @@ US_trans <- st_transform(US, "+proj=longlat +ellps=WGS84 +datum=WGS84")
 ##### Canada - pull from mapdata package
 Canada <- map_data("world", "Canada")
 ```
+
+Now add these layers to the plot to show political boundaries on land:
 
 ```{r}
 ggplot() +
@@ -1139,6 +1065,64 @@ ggplot() +
   coord_sf(xlim = c(-74, -64),  ylim = c(40, 47.3)) + 
   theme_minimal() 
   
+```
+
+Now that our map shows major geographic features, we can add point data
+relevant to our own work (here we will add data points from the Gulf of
+Maine longline survey).
+
+The `ecodata` package is maintained by the Northeast Fishery Science
+Center's Ecosystem Dynamics branch and contains much of the data used in
+their annual State of the Ecosystem Report, including data like shape
+files for ecological production units (`ecodata::epu_sf`).
+
+```{r}
+# remotes::install_github("noaa-edab/ecodata",build_vignettes=TRUE)
+library(ecodata) 
+GOMlongline <- ecodata::long_line_survey # Load longline survey data
+
+# Let's assume that we only care about survey stations that observed blackbelly rosefish, we can select only those data
+rosefish <- GOMlongline %>%
+        filter(COMMON_NAME == "BLACKBELLY ROSEFISH")
+```
+
+Now we can add the survey stations that observed blackbelly rosefish,
+but let's color stations by season so it is easy to see where fish were
+observed in the spring vs. fall.
+
+```{r}
+ggplot() +
+  geom_contour_filled(data = BathyData, aes(x = lon, y = lat, z = value), 
+                      breaks = c(0, -50, -100, -200, -300, -400, -500, -5000)) + 
+  xlab("Longitude") + 
+  ylab("Latitude") +   
+  scale_fill_manual(values =  c("#DEF5E5FF", "#A0DFB9FF", "#54C9ADFF", "#38AAACFF", "#348AA6FF", "#366A9FFF", "#40498EFF"), name = "Depth (m)", labels = c("[0,50)", "[50,100)", "[100, 200)", "[200, 300)", "[300,400)", "[400,500)", "[500,5000)" )) + 
+  geom_polygon(data = Canada, color = "black", fill = "gray", aes(x=long, y=lat, group=group)) + 
+  geom_sf(data = US_trans, color="black", fill = "gray") + 
+  geom_point(data = rosefish, aes(x=DECDEG_BEGLON_SET, y=DECDEG_BEGLAT_SET, col = SEASON)) + # Add blackbelly rosefish survey stations using the latitude/longitude at the beginning of the survey set to add points
+        
+  coord_sf(xlim = c(-74, -64),  ylim = c(40, 47.3)) + 
+  theme_minimal() 
+```
+
+Now we have points at all of our survey locations, but the colors are
+difficult to see and many points overlap. We can change the shape rather
+than color to distinguish between season and make points
+semi-transparent to see them better.
+
+```{r}
+ggplot() +
+  geom_contour_filled(data = BathyData, aes(x = lon, y = lat, z = value), 
+                      breaks = c(0, -50, -100, -200, -300, -400, -500, -5000)) + 
+  xlab("Longitude") + 
+  ylab("Latitude") +   
+  scale_fill_manual(values =  c("#DEF5E5FF", "#A0DFB9FF", "#54C9ADFF", "#38AAACFF", "#348AA6FF", "#366A9FFF", "#40498EFF"), name = "Depth (m)", labels = c("[0,50)", "[50,100)", "[100, 200)", "[200, 300)", "[300,400)", "[400,500)", "[500,5000)" )) + 
+  geom_polygon(data = Canada, color = "black", fill = "gray", aes(x=long, y=lat, group=group)) + 
+  geom_sf(data = US_trans, color="black", fill = "gray") + 
+  geom_point(data = rosefish, aes(x=DECDEG_BEGLON_SET, y=DECDEG_BEGLAT_SET, shape=SEASON),alpha = 0.5) + # shape changes the point shape, alpha changes the transparency
+        
+  coord_sf(xlim = c(-74, -64),  ylim = c(40, 47.3)) + 
+  theme_minimal()
 ```
 
 This is a decent map, but there are often feature required for
@@ -1194,13 +1178,14 @@ add the other map features:
   scale_fill_manual(values =  c("#DEF5E5FF", "#A0DFB9FF", "#54C9ADFF", "#38AAACFF", "#348AA6FF", "#366A9FFF", "#40498EFF"), name = "Depth (m)", labels = c("[0,50)", "[50,100)", "[100, 200)", "[200, 300)", "[300,400)", "[400,500)", "[500,5000)" )) +
   geom_polygon(data = Canada, color = "black", fill = "gray", aes(x=long, y=lat, group=group)) + 
   geom_sf(data = US_trans, color="black", fill = "gray") +
+  geom_point(data = rosefish, aes(x=DECDEG_BEGLON_SET, y=DECDEG_BEGLAT_SET, shape=SEASON),alpha = 0.5) +
   coord_sf(xlim = c(-74, -64),  ylim = c(40, 47.3)) +
   theme_minimal() + 
   theme(plot.background = element_rect(color = "white")) +
          
   # Add labels for oceanographic regions
   annotate("text", x = -68.5, y = 41.25, label = "Georges \n Bank", hjust=0) +
-  annotate("text", x = -69.5, y = 43, label = "Gulf of Maine", hjust=0) +
+  annotate("text", x = -69.5, y = 43.35, label = "Gulf of Maine", hjust=0) +
 
   # Add the background for the inset map grob (ORDER MATTERS, be sure to add the background layer first, then add the inset map layer)
   annotation_custom(grob = boarderPlot, xmin = -74.6, xmax = -70.5, ymin = 45, ymax = 47.7) +
@@ -1225,6 +1210,11 @@ relative locations, which often don't translate well when figure sizes
 change (e.g. when you change the width of your RStudio window). To avoid
 this, be sure to save your nicely formatted plots WITH DIMENSIONS
 SPECIFIED!
+
+-   Don't spend lots of time fiddling with placement of different
+    elements (e.g. annotations, inset maps, scale bars, ect.) in your
+    plot window! First specify dimensions for the saved plot and check
+    the saved version as you make adjustments.
 
 ```{r}
 ggsave(filename = here::here("Intro_to_R", "Figures", "GB-GOM-Map.png"),  height = 6.5) # By default ggsave saves the last plot generated
