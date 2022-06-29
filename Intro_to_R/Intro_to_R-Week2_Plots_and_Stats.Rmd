@@ -133,17 +133,20 @@ hist() function
 
 <!--# Use histogram to talk about base R plots -->
 
+```{r}
+hist(penguins_complete$body_mass_g)
+```
+
 `hist()` - This base R function computes a histogram of the given data
 values. The argument must be a numeric vector (a column of data is a
 vector).
-
 
 This and many other plots can be created using base R functions, but
 `ggplot()` provides a more consistent framework to generate and combine
 many different plots using tidy data as an input.
 
-For this, you'll need the ggplot2 package which is loaded as
-part of the tidyverse.
+For this, you'll need the ggplot2 package which is loaded as part of the
+tidyverse.
 
 There are 4 aspects of ggplots you need to know about:
 
@@ -183,7 +186,7 @@ There are 4 aspects of ggplots you need to know about:
         allowed
 
 Because histograms only take one (numeric) variable at a time, you only
-need to supply an x argument to the aes()
+need to supply an x argument to the `aes()`
 
 ```{r}
 hist(penguins_complete$body_mass_g)
@@ -211,7 +214,7 @@ ggplot(data=penguins_complete, aes(x=species, y=body_mass_g)) + geom_boxplot() +
 
 ```
 
-We can use group_by and summarise to calculate group means.
+We can use `group_by` and `summarise` to calculate group means.
 
 ```{r}
 
@@ -221,8 +224,8 @@ penguins_complete %>%
 
 ```
 
-We could also guess that sexual dimorphism would cause variation is mass
-between the sexes (i.e., males are typically larger).
+We could also hypothesize that sexual dimorphism would cause variation
+is mass between the sexes (i.e. males are typically larger).
 
 Let's look at those differences for Adelie penguins only.
 
@@ -250,7 +253,7 @@ Now we may want to evaluate covariation between numeric variables, for
 example, we could examine the relationship between flipper length and
 body mass. What kind of relationship would you expect?
 
-ggplot excels at multi-variable plots as compared to base graphics.
+`ggplot` excels at multi-variable plots as compared to base graphics.
 
 Here's the basic scatterplot:
 
@@ -260,10 +263,9 @@ ggplot(data=penguins_complete, aes(x=flipper_length_mm, y=body_mass_g)) + geom_p
 
 ```
 
-And the more advanced versions
-
-Note: ggplot will automatically assign colors, but you can manually
-change them as well (will discuss later)
+And a more advanced version that is color-coded by species (`ggplot`
+will automatically assign colors, but you can manually change them as
+well):
 
 ```{r}
 
@@ -285,7 +287,7 @@ ggplot(data = penguins_complete, aes(x=flipper_length_mm, y=body_mass_g,color=sp
 grouping variables so long as they are specified in the global aes
 
 The default method is a nonlinear model (loess), but in this case, a
-simple "lm" is appropriate
+simple linear model ("lm") is appropriate
 
 ```{r}
 ggplot(data = penguins_complete, aes(x=flipper_length_mm, y=body_mass_g,color=species)) + geom_point() + geom_smooth(method="lm")
@@ -370,13 +372,14 @@ Statistical models describe relationships between the data used to build
 them and can be used to evaluate hypotheses about these relationships
 (e.g. does a relationship exist, does it have a directional trend,
 ect.). These models are a special type of mathematical model which are
-informed by data. They incorporate uncertainty and randomness
+informed by data. They incorporate uncertainty and randomness.
 
 Why do we create models?
 
 1.  Explanation -- we care about understanding the form of our model, in
     particular, quantifying relationships between the response and
-    explanatory variables
+    explanatory variables or better understanding the processes that
+    underlie our observations.
 
 2.  Prediction -- we don't care so much about how our model arises, only
     that it does a good job predicting the response based on the
@@ -385,6 +388,9 @@ Why do we create models?
 ### Model nomenclature:
 
 -   Variability/spread - refers to how spread out a set of data is
+
+-   Distribution - usually refers to the statistical shape of the data
+    (e.g. normal/Gaussian, Poisson, ect.)
 
 -   Response variable/outcome variable -- variable whose variation
     depends on other variables
@@ -395,32 +401,6 @@ Why do we create models?
 -   Covariate -- an explanatory variable that is not primary explanatory
     variable of interest, but that may be important to the shape of the
     response variable
-
-### Objects needed for modelling in R:
-
-Data frame -- collection of variables Function -- tool used to build and
-evaluate models Formula -- a way to describe how you want to relate
-variables to each other
-
-A formula contains the response variable seperated by a tilde \~ from
-the explanatory variable
-
-For example:
-
-lm(body_mass_g \~ flipper_length_mm, data = adelie_data)
-
-In English: "Body mass as a function of flipper length" "Body mass given
-flipper length"
-
-### Steps of model design:
-
-1.  Get dataset
-2.  Specify response and explanatory variables of interest
-3.  Select a model architecture i.e., linear model: lm()
-4.  Fit/train a model
-5.  Evaluate the model
-
-\*decisions the modeler makes have an impact on the results
 
 ## t-tests
 
@@ -595,6 +575,23 @@ island_mod<-lm(adelie_penguins$body_mass_g ~ adelie_penguins$island)
 plot(island_mod)
 ```
 
+<!--# START HERE, need to give a bit of background on lm,glm,gam -->
+
+## Models to describe relationships: linear models, GLMs, GAMs
+
+### Steps of model design:
+
+1.  Describe, wrangle & visualize dataset - often this is part of
+    hypothesis development
+2.  Specify response and explanatory variables of interest
+3.  Select a model architecture i.e., linear model, generalized linear
+    model (GLM), generalized additive model (GAM), ect.
+4.  Fit/train a model using data
+5.  Evaluate the model's performance (e.g. predictive power, deviance
+    explained, compare to other models, ect.)
+
+\*decisions the modeler makes have an impact on the results
+
 ## Simple linear regression <!--# May be good to discuss GLMs/GAMs -->
 
 What is the statistical relationship between X and Y? 𝑌=𝑎+𝑏𝑋 where 𝑎 and
@@ -604,8 +601,9 @@ Scenario: On day 3, a scale was broken by an angry male penguin kicking
 it across ice, backup scale battery died after first penguin. We were
 unable to collect mass data all day.
 
-Solution: Can we use flipper length to predict body mass of Adelie
-penguins that we couldn't weigh today?
+Hypothesis: Weight and flipper length are related so we can use flipper
+length to predict body mass of Adelie penguins that we couldn't weigh
+today.
 
 We are interested in predicting body mass based on flipper length.
 First, let's visualize a likely relationship between flipper length and
@@ -621,7 +619,21 @@ ggplot(adelie_penguins, aes(x=flipper_length_mm, y = body_mass_g)) + geom_point(
 
 Create a model of body mass as a function of flipper length, where the
 coefficients should be given relative to zero (fit without an intercept
-term). The modeling architecture should use lm().
+term). The modeling architecture should use `lm()`.
+
+To do this you will need:
+
+-   Data frame -- collection of variables Function -- tool used to build
+    and evaluate models Formula -- a way to describe how you want to
+    relate variables to each other
+
+-   A formula contains the response variable seperated by a tilde \~
+    from the explanatory variable, for example:
+
+lm(body_mass_g \~ flipper_length_mm, data = adelie_data)
+
+In English: "Body mass as a function of flipper length" "Body mass given
+flipper length"
 
 ```{r}
 flipper1<-lm(body_mass_g ~ flipper_length_mm + 0, data = adelie_penguins)
@@ -840,19 +852,158 @@ better, or just a little bit better? What else could help you decide?
 What if we were using the whole penguins dataset? Could we use species
 as a covariate when modelling this relationship? Why or why not? *A:*
 
-### More modeling in R
+### Generalized Linear Models (GLMs)
 
-There are many types of models, and R is flexible for writing models in
-nearly any way you'd like
+GLMs relax the assumption that responses are normally distributed, an
+assumption that biological data often violates.
 
-Other R model functions: lme(), glm(), gam(), nls()
+We can implement the same model to relate body weight to flipper length
+as a GLM:
 
-These models have different arguments and require you to write the
-formula appropriately, but the functions are all applied in much the
-same way as lm()
+```{r}
+GLM1 <- glm(body_mass_g ~ flipper_length_mm + 0, family = gaussian, data = adelie_penguins)
 
-There are also many methods for model selection and evaluation, but
-ultimately, many decisions are up to you (the modeller)!
+GLM1
+```
+
+These results look very similar to the linear model because we assumed a
+gaussian (normal) distribution.
+
+```{r}
+flipper1
+```
+
+To change this assumption we can change the `family` argument
+
+```{r}
+GLM2 <- glm(body_mass_g ~ flipper_length_mm + 0, family = poisson, data = adelie_penguins)
+
+GLM2
+```
+
+To select between models we may compare:
+
+-   AIC - balances fit with model parsimony (# of parameters), smaller
+    is better, scores within +/-2 of each other are equivalent
+
+-   Null deviance - how well response is predicted by just the intercept
+
+-   Residual deviance - how well response predicted by intercept &
+    predictor variables
+
+-   You can find a nice description of deviance
+    [here](https://bookdown.org/egarpor/PM-UC3M/glm-deviance.html).
+
+GLM2 model with a Poisson distribution assumption has a larger AIC so
+our first diagnostic suggests that we should stick with a gaussian
+assumption.
+
+When we look at the deviance explained for both models, the GLM2
+explains more deviance.
+
+```{r}
+# Calculate the deviance explained by the models
+dev.explained1 <- (GLM1$null.deviance - GLM1$deviance)/GLM1$null.deviance
+
+dev.explained2 <- (GLM2$null.deviance - GLM2$deviance)/GLM2$null.deviance
+
+# Round to 3 decimal places
+dev.explained1 <- round(dev.explained1,3)
+dev.explained2 <- round(dev.explained2,3)
+
+dev.explained1
+dev.explained2
+```
+
+For Poisson models we may also want to check for overdispersion (if
+there is this isn't an appropriate distribution to assume):
+
+```{r}
+library(AER)
+
+dispersiontest(GLM2)
+```
+
+The p-value is very small for this dispersion test, indicating that
+there is overdispersion so this model is not appropriate for our data.
+
+### Generalized Additive Models (GAMs)
+
+GAMs provide another level of flexibility by allowing for nonlinear
+relationships between variables. Both GLMs and GAMs can also account for
+interactions between variables.
+
+```{r}
+# install.packages("mgcv")
+library(mgcv)
+
+GAM1 <- gam(body_mass_g ~ flipper_length_mm + 0, family = gaussian, data = adelie_penguins)
+
+GAM1
+```
+
+Now let's see if including categorical sex variables improves our GAM
+prediction.
+
+```{r}
+GAM2 <- gam(body_mass_g ~ flipper_length_mm + sex + 0, family = gaussian, data = adelie_penguins)
+
+GAM2
+```
+
+To compare GAMs you may look at:
+
+-   Generalised cross-validation (GCV) score - smaller values indicate
+    better fit, GCV used to select model smoothness
+
+-   Deviance explained - larger is generally better
+
+-   Significance for model predictor variables
+
+GAM2 that includes flipper length and sex as predictor variables have a
+smaller GCV score, suggesting a better fit.
+
+Let's take a look at some of these other diagnostics for both GAMs:
+
+```{r}
+print("GAM1 summary")
+summary(GAM1)
+print("GAM2 summary")
+summary(GAM2)
+
+```
+
+Flipper length was a significant variable in both models so it supports
+our hypothesis that this is a good predictor of body weight. GAM2 has a
+higher deviance explained so sex does appear to help explain body weight
+but not as significantly as flipper length.
+
+We covered the basics of GLMs and GAMs here but there are much more
+extensive tutorials that provide more specifics, e.g.:
+
+-   Intro to GLMs & GAMs:
+    <https://christophm.github.io/interpretable-ml-book/extend-lm.html>
+
+-   More detailed GLM examples:
+    <https://timnewbold.github.io/teaching_resources/GLMs.html>
+
+### Other things to think about
+
+-   It is generally best to avoid including multiple explanatory
+    variables that are highly correlated (e.g. bottom temperature and
+    depth are rarely included in models together since they are
+    correlated variables)
+
+-   You can include known interactions in models (e.g. latitude and
+    longitude are often reported together for ecological sampling, if
+    you want to include the effect of sample location in a model it is
+    often as an interaction between these two variables), one way to do
+    this is via
+    [splines](https://fromthebottomoftheheap.net/2014/05/09/modelling-seasonal-data-with-gam/):
+
+```{r, eval=FALSE}
+GAMExample <- gam(sample ~ s(LONGITUDE, LATITUDE) + DEPTH)
+```
 
 ## Mapping
 
