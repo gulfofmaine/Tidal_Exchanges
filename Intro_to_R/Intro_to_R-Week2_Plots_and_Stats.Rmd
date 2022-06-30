@@ -28,6 +28,7 @@ editor_options:
 #install.packages("sf",repos = "http://cran.us.r-project.org") 
 #install.packages("rnaturalearth",repos = "http://cran.us.r-project.org") 
 #install.packages("wesanderson",repos = "http://cran.us.r-project.org")
+#install.packages("tidytext",repos = "http://cran.us.r-project.org")
 
 # Load packages to use
 library(ggridges)
@@ -35,6 +36,7 @@ library(modelr)
 library(sf)
 library(rnaturalearth)
 library(wesanderson)
+library(tidytext)
 
 # You should already have this package installed
 library(tidyverse)
@@ -346,6 +348,86 @@ favorites include:
     Anderson's movies in the
     [`wesanderson`](https://github.com/karthik/wesanderson) package.
 
+## Principal component analysis (PCA)
+
+-   Exploratory data analysis
+-   Dimension reduction while preserving information
+-   Represent the directions of the data that explain the most variance
+-   "new axes that provide the best angle to see and evaluate the data"
+
+```{r}
+
+# Characterize penguin species differences and similarities
+
+# select numeric variables of interest and scale them
+# scale() default is to center and scale data (subtract mean and divide by SD)
+# puts variables in same range for analysis
+penguins_complete %>%
+  select(bill_length_mm,bill_depth_mm,flipper_length_mm,body_mass_g)%>%
+  scale()->peng
+
+# column names
+colnames(peng)<-c("bill_length_mm","bill_depth_mm","flipper_length_mm","body_mass_g")
+
+# Principal Component Analysis
+peng_pca<-prcomp(peng)
+
+# summary output
+summary(peng_pca)
+# principal component 1 explains 0.6863 (68.63%) variance
+# principal component 2 explains 0.1945 (19.45%) variance
+
+# Rotation are called "loadings"
+# 4 principal components
+# there are as many principal components as there are variables in the data
+peng_pca
+# they are the linear combination of weights for each variable that contribute to that "component"
+
+```
+
+# Plot PC1 and PC2
+
+```{r}
+
+# species names
+peng_species<-penguins_complete$species
+
+# variable loadings
+var<-as_tibble(peng_pca$rotation)
+
+# variable names
+varnames<-row.names(peng_pca$rotation)
+
+# plot of PC1 and PC2 scores and variable loadings
+ggplot()+
+  geom_point(data=ind,aes(x=PC1,PC2,color=peng_species))+
+  geom_segment(data=var,aes(xend=PC1,yend=PC2),x=0,y=0,
+               arrow=arrow(length=unit(.05,"inches"),type="closed"))+
+  geom_text(data=var,aes(x=PC1,y=PC2),label=varnames,
+            hjust=0,vjust=1,size=4)
+```
+
+-   PC1 (x-axis) associated with flipper length and body mass
+-   PC2 (y-axis) associated with bill size variables
+-   Gentoo characterized by longer flippers and larger body mass
+-   Gentoo more different than other species in terms of flippers and body mass
+-   Adelie and Chinstrap more similar to each other (smaller with shorter flippers)
+-   Adelie and Chinstrap differentiated by bill shape
+-   Chinstrip bill length longer than Adelie (further down)
+-   Adelie bills deeper than Gentoo and are maybe slightly deeper than Chinstrap (furthest to the left)
+
+```{r}
+
+# scatter plots to confirm
+
+ggplot(penguins_complete, aes(x = flipper_length_mm, y = body_mass_g, colour = species)) +
+  geom_point()
+
+ggplot(penguins_complete, aes(x = bill_depth_mm, y = bill_length_mm, colour = species)) +
+  geom_point()
+
+```
+ 
 ## Step 5: Model
 
 ## What is a model?
