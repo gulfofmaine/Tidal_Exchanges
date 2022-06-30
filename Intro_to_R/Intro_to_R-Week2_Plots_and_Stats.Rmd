@@ -467,6 +467,53 @@ hypothesis is correct
 
 *Q:* How would you explain the results of this t-test in words? *A:*
 
+## Chi-Square test
+# Relation of categorical variables
+# Used to determine if two categorical variables have significant relationship
+
+```{r}
+
+# island and species
+penguins_complete%>%
+  ggplot(aes(x=island,y=species,color=species))+
+  geom_jitter()
+
+# table
+table(penguins_complete$island,penguins_complete$species)
+# input data is in form of table
+
+# Chi-Square test
+chisq.test(table(penguins_complete$island,penguins_complete$species))
+# check the p-value, strong relationship
+
+# sex and species
+penguins_complete%>%
+  filter(!is.na(sex))%>%
+  ggplot(aes(x=sex,y=species,color=species))+
+  geom_jitter()
+
+# table
+table(penguins_complete$sex,penguins_complete$species)
+
+# test
+chisq.test(table(penguins_complete$sex,penguins_complete$species))
+# no meaningful relationship
+
+# island and sex
+penguins_complete%>%
+  filter(!is.na(sex))%>%
+  ggplot(aes(x=island,y=sex,color=sex))+
+  geom_jitter()
+
+# table
+table(penguins_complete$island,penguins_complete$sex)
+
+# test
+chisq.test(table(penguins_complete$island,penguins_complete$sex))
+# no meaningful relationship
+
+```
+
 ## ANOVA
 
 Compares the means between the groups, determines statistical
