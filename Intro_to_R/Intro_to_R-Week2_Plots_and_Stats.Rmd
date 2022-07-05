@@ -398,6 +398,9 @@ var<-as_tibble(peng_pca$rotation)
 # variable names
 varnames<-row.names(peng_pca$rotation)
 
+# individual scores
+ind<-as.data.frame(peng_pca$x)
+
 # plot of PC1 and PC2 scores and variable loadings
 ggplot()+
   geom_point(data=ind,aes(x=PC1,PC2,color=peng_species))+
