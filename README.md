@@ -32,7 +32,7 @@ Beginning on April 7, 2022 this group will meet the first Thursday of each month
 * 06/02/22: Tips & tools to make coding & open data science more accessible - Adam ([autogenerating tabs in Rmarkdown](https://interludeone.com/posts/2022-03-04-programmatically-generate-tabs-in-rmarkdown/?panelset=dream&panelset1=torgersen2![image](https://user-images.githubusercontent.com/23203046/171659296-369e3231-4fb3-48f6-a2e1-85b2bf38655e.png)
 )), Jamie ([extracting in-text citations](https://github.com/Jamie-Behan/Extract_in-text_citations)), Jerelle (Rmarkdown visual editor). 
 * 07/07/22: Apply functions and data wrangling
-* 08/04/22: TBD
+* 08/04/22: Plotting tricks - everyone bring a trick on how to complete the annoying final polishing for plots (e.g. fixing legend labels, extra formatting steps to make things pretty, ect.)
 * 09/01/22: TBD
 * 10/06/22: TBD
 * 11/03/22: TBD
