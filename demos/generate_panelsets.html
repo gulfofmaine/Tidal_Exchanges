@@ -2116,6 +2116,9 @@ div.tocify {
 
 <div id="writing-code-that-writes-itself" class="section level1">
 <h1>Writing Code that Writes Itself</h1>
+<h1>
+Test Header
+</h1>
 <p>Original inspiration for this guide comes from here: <a href="https://interludeone.com/posts/2022-03-04-programmatically-generate-tabs-in-rmarkdown/?panelset=dream&amp;panelset1=torgersen2">interlude
 one</a></p>
 <p>This markdown details a common workflow simplification in two parts:
@@ -2357,25 +2360,33 @@ us. Adding insult to injury, we either have to write over the same
 object in the environment which can lead to problems if you mess up, or
 you need to create a bunch of clutter in the environment. <strong>These
 are all bad patterns.</strong></p>
+<p>See <a href="https://deviq.com/principles/dont-repeat-yourself">DRY
+Principal</a>.</p>
 </div>
-<div id="reduce-repetition-with-plot-function" class="section level2">
-<h2>Reduce Repetition with Plot Function</h2>
+<div id="reduce-repetition-using-abstraction" class="section level2">
+<h2>Reduce Repetition Using Abstraction</h2>
 <p>One way to reduce the “copy and paste” is with a function for the
-plot. In this case the only things that change with each iteration is
-the species we filter the data with, and the plot text it generates.</p>
+plot. Functions are useful when we want to abstract a repeated process,
+by isolating the elements that change from those that do not.</p>
+<p>In this case the only things that change with each iteration is the
+species we filter the data with, and the plot text it generates. So in
+practice this is the only argument we need for the function:</p>
 <pre class="r"><code># Make a function for how the plot should look:
 plot_fun &lt;- function(spec_id){
-  # Step 1: Filter the species
-spec_dat &lt;- penguins %&gt;% filter(species == spec_id)
-
-# Step 2: Plot Relationship
-ggplot(spec_dat, aes(bill_length_mm, flipper_length_mm, color = sex)) +
-  geom_point() +
-  facet_wrap(~island) +
-  labs(x = &quot;Bill Length (mm)&quot;,
-       y = &quot;Flipper Length (mm)&quot;,
-       title = paste(spec_id, &quot;Penguins&quot;))
   
+  # Step 1: Filter the species
+  spec_dat &lt;- penguins %&gt;% filter(species == spec_id)
+  
+  # Step 2: Plot Relationship
+  p &lt;- ggplot(spec_dat, aes(bill_length_mm, flipper_length_mm, color = sex)) +
+    geom_point() +
+    facet_wrap(~island) +
+    labs(x = &quot;Bill Length (mm)&quot;,
+         y = &quot;Flipper Length (mm)&quot;,
+         title = paste(spec_id, &quot;Penguins&quot;))
+  
+  # Step 3: Return the plot as output
+  return(p)
   
 }</code></pre>
 </div>
@@ -2385,7 +2396,7 @@ ggplot(spec_dat, aes(bill_length_mm, flipper_length_mm, color = sex)) +
 <p>One thing I like to do that I think helps reduce the clutter in a big
 markdown report, is to swap out what plots display using tabs or
 panels.</p>
-<p>What that looks like in practice is this:</p>
+<p><strong>This is what that looks like in practice:</strong></p>
 <div id="how-do-tabs-work" class="section level2 tabset">
 <h2 class="tabset">How do Tabs Work?</h2>
 <p>Tabs can be created by including the text: <code>{tabset}</code>
