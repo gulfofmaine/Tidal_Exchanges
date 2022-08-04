@@ -33,9 +33,9 @@ Beginning on April 7, 2022 this group will meet the first Thursday of each month
 )), Jamie ([extracting in-text citations](https://github.com/Jamie-Behan/Extract_in-text_citations)), Jerelle (Rmarkdown visual editor). 
 * 07/07/22: Apply functions ([Short intro to apply functions](https://www.guru99.com/r-apply-sapply-tapply.html)) and data wrangling with purrr ([Purrr cheat sheet](https://github.com/rstudio/cheatsheets/blob/main/purrr.pdf))
 * 08/04/22: Plotting tricks - everyone bring a trick on how to complete the annoying final polishing for plots (e.g. fixing legend labels, extra formatting steps to make things pretty, ect.)
-* 09/01/22: TBD
-* 10/06/22: TBD
-* 11/03/22: TBD
+* 09/01/22: Science communication tools & tricks
+* 10/06/22: Quarto
+* 11/03/22: TBD - Jerelle will lead
 * 12/01/22: TBD
 
 ----
