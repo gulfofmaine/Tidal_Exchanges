@@ -31,11 +31,12 @@ Beginning on April 7, 2022 this group will meet the first Thursday of each month
 * 05/05/22: Apply skills from last 2 meetings and get comfortable with GitHub - Adam and Amanda
 * 06/02/22: Tips & tools to make coding & open data science more accessible - Adam ([autogenerating tabs in Rmarkdown](https://interludeone.com/posts/2022-03-04-programmatically-generate-tabs-in-rmarkdown/?panelset=dream&panelset1=torgersen2![image](https://user-images.githubusercontent.com/23203046/171659296-369e3231-4fb3-48f6-a2e1-85b2bf38655e.png)
 )), Jamie ([extracting in-text citations](https://github.com/Jamie-Behan/Extract_in-text_citations)), Jerelle (Rmarkdown visual editor). 
-* 07/07/22: Apply functions and data wrangling
-* 08/04/22: TBD
-* 09/01/22: TBD
-* 10/06/22: TBD
-* 11/03/22: TBD
+* 07/07/22: Apply functions ([Short intro to apply functions](https://www.guru99.com/r-apply-sapply-tapply.html)) and data wrangling with purrr ([Purrr cheat sheet](https://github.com/rstudio/cheatsheets/blob/main/purrr.pdf))
+* 08/04/22: Plotting tricks - everyone bring a trick on how to complete the annoying final polishing for plots (e.g. fixing legend labels, extra formatting steps to make things pretty, ect.)
+* 09/01/22: Science communication tools & tricks: [hosting Rmd html output on GitHub](https://mbounthavong.com/blog/2022/7/30/hosting-a-r-markdown-html-file-on-a-github-page), creating Github README profiles([instructions](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme), [examples](https://github.com/abhisheknaiidu/awesome-github-profile-readme), [README generator](https://rahuldkjain.github.io/gh-profile-readme-generator/)), [adding spinner as figures load in shiny](https://daattali.com/shiny/shinycssloaders-demo/), [viridis color scales](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html) and [checking plots for colorblind interpretation](https://cran.r-project.org/web/packages/colorBlindness/vignettes/colorBlindness.html), [creating slides in xaringan](https://arm.rbind.io/slides/xaringan.html#1)
+* 10/06/22: Introduction to quarto
+* 11/03/22: TBD - Jerelle will lead
 * 12/01/22: TBD
 
 ----
+
