@@ -396,6 +396,9 @@ var<-as_tibble(peng_pca$rotation)
 # variable names
 varnames<-row.names(peng_pca$rotation)
 
+# individual scores
+ind <- as.data.frame(peng_pca$x)
+
 # plot of PC1 and PC2 scores and variable loadings
 ggplot()+
   geom_point(data=ind, aes(x=PC1,PC2,color=peng_species))+
@@ -504,7 +507,7 @@ body mass between males and females? *A:*
 
 We will use the adelie_penguins data here
 
-I used a denisty ridgeplot rather than a histogram, because the
+I used a density ridgeplot rather than a histogram, because the
 "stacked" nature of a regular histogram makes it difficult to spot
 inter-group differences. Ridgeplots are created by the ggridges package
 
@@ -561,7 +564,7 @@ hypothesis is correct
 # island and species
 penguins_complete%>%
   ggplot(aes(x=island,y=species,color=species))+
-  geom_jitter()
+  geom_jitter() # moves points a little so we can see them better (try excluding this line to see what happens)
 
 # table
 table(penguins_complete$island,penguins_complete$species)
@@ -659,7 +662,7 @@ adelie_penguins %>%
 Ho: mean mass at Torgersen = mean mass at Dream = mean mass at Biscoe
 Ha: mean mass at Torgersen ≠ mean mass at Dream ≠ mean mass at Biscoe
 
-The aov() function is in the stats package.
+The `aov()` function is in the `stats` package.
 
 ```{r}
 bodymass_aov <- aov(body_mass_g ~ island, data=adelie_penguins)
@@ -722,7 +725,7 @@ plot(island_mod)
 
 \*decisions the modeler makes have an impact on the results
 
-### Simple linear regression 
+### Simple linear regression
 
 What is the statistical relationship between X and Y? 𝑌=𝑎+𝑏𝑋 where 𝑎 and
 𝑏 are the estimated parameters intercept and slope
@@ -943,7 +946,7 @@ doesn't account for sex? How could we compare the models? *A:*
 ```{r}
 ggplot() + 
   geom_point(data=adelie_penguins, aes(x=flipper_length_mm, y = body_mass_g, color = sex)) + 
-  geom_point(data=mass_flipper_preds2, aes(x=flipper_length_mm, y=predicted_mass, color = sex), pch=17, size=2) +
+  geom_point(data=mass_flipper_preds2, aes(x=flipper_length_mm, y=predicted_mass, color = sex), pch=17, size=2) + # triangles are predicted mass, round points are observations for birds we could weigh
   geom_line(data=mass_flipper_preds2, aes(x=flipper_length_mm, y=predicted_mass, color = sex)) + 
   geom_line(data=mass_flipper_preds2,aes(x=flipper_length_mm, y=upr, color = sex), lty=2) + 
   geom_line(data=mass_flipper_preds2,aes(x=flipper_length_mm, y=lwr, color = sex), lty=2) +
