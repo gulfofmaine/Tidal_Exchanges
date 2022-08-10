@@ -1,3 +1,99 @@
 # Onboarding 
 
+<<<<<<< HEAD
 My personal contribution that will change the onboarding experience for everyone
+=======
+Here are a few items to take care of when you join the lab!
+
+## To Do List
+
+General GMRI onboarding
+
+- Complete the "Gulf of Maine Research Institute Employee Orientation Checklist" 
+  - Get a copy from your supervisor
+  - Covers general onboarding, building access, computer setup, HR, ect.
+- Talk to HR for initial paperwork, benefits, access to Paylocity, ect.
+  - Contact at: hr@gmri.org 
+- Talk to help desk to get access to:
+  -  Building 
+  -  Parking pass
+  -  Wifi
+  -  Computers/tech you need for your research
+  -  Contact at: help@gmri.org
+  
+Lab onboarding
+
+- Read through Lab Manual
+- Make a GitHub account if you don't have one already
+- Make sure you have access permission to folders on Box 
+  -  ResData contains shared data and files that you may need access to, but there may be other lab- or project-specific folders you will need to be added to
+- Once the above is complete, check that you have access to:
+  - Okta - GMRI's single sign-on
+  - Paylocity - HR documents
+  - Outlook - email
+  - Zoom - web conferencing
+  - Slack - team messaging
+  - Box - cloud storage
+  - GMRI Intranet - HR and other general information
+  - Also check that you have been added to staff list on GMRI website
+- Recommended slack channels
+  - benefitspopcorn
+  - general
+  - random
+  - gmri-research-team
+- Email listserves to be on
+  - GMRIStaff
+- Meetings to know about: ALL
+  - Bi-weekly all staff meetings (Mondays)
+  - Bi-weekly research staff meetings (Mondays)
+  - Tidal exchange meetings - joint meetings about open data science
+- Meetings to know about: Lisa's lab
+  - Bi-weekly lab meetings (Thursdays)
+  - Individual meetings on alternating week from lab meeting
+- Meetings to know about: Kathy's lab
+  - 
+- Other useful knowledge
+  - During COVID times the back door has a doorbell if you need to be let in during business hours
+
+
+
+
+### Communication
+
+#### HR support
+  
+- hr@gmri.org email for HR support
+- Bobbi-Jo Hutchins is the Payroll and Benefits Specialist. She is a great resource for HR related questions. She can be contacted at hr@gmri.org, bhutchins@gmri.org, (207) 228-1643, or on slack.
+- Bobbi has office hours every Monday-Thursday from 1-2pm. Zoom link for office hours is https://gmri-org.zoom.us/j/91304989626?pwd=VUJweU8vSkhKV21XQVkyMkNOaHMyZz09            
+(Office hours info last updated on 10/25/21)
+- Joining the #Benefitspopcorn on Slack is a good resource
+- Paylocity and the GMRI Intranet also have HR related information
+
+####  IT support
+  
+- Tim Reich or Nick Georghiou. Questions or formal help requests can be directed to help@gmri.org, or smaller/quicker questions by contacting Tim or Nick on slack.
+
+### GMRI resources
+
+#### Intranet
+
+- GMRI’s Intranet is a website managed through sharepoint in which the purpose is to work towards the strategic plan goal of “investing in technology that empowers staff with skills and tools for innovation, collaboration, and efficiency”.
+- GMRI’s Intranet is a central location for GMRI internal information.
+- Ways to access the Intranet include:
+  - This link: https://gmri365.sharepoint.com/sites/GMRIHome
+  - From office365, clicking on the app launcher in the top left hand corner, clicking “all apps”, then scrolling down to the “GMRI Intranet” tab.
+  - Emails form "GMRI Human Resources usually have a line at the bottom that reads "to access GMRI's Intranet click here"
+- GMRI Intranet has information on:
+  - Previously recorded staff meeting presentations
+  - GMRI interactive phone list
+  - Staff events
+  - Benefit documents
+  - GMRI policies
+  - Resources for hiring managers
+  - IT documentation
+  - Application cheat sheets and tips
+  - Forms you may need to fill out
+  - Web links to Paylocity, Zoom (specific room zoom links), benefit portal links
+  - Has search engine for fast and effective search
+
+>>>>>>> b71e6b9a0af584633a0935b9e8c9644b99e98982
