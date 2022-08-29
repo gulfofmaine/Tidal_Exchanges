@@ -5,13 +5,15 @@ date: "2022-08-09"
 authors: A.Hart, A.Kemberling
 ---
 
+![](https://pbs.twimg.com/media/FZ0ux-gXwAMUF0U.jpg){fig-alt="Twitter post by Jonathan Kitt with the phrase 'Me, still learning Rmarkdown... quarto, quarto everywhere.'" width="551" fig-align="center"}
+
 # Why Quarto?
 
 If you already use markdown or RMarkdown, you may ask yourself "why switch to quarto?" As new quarto users, our switch has been mostly driven by improved access to a wide variety of formatting options and tools to make the code and documents we already write better.
 
 #### This tutorial
 
-We set up this highly sophisticated document to reflect the default features and formatting already available in RMarkdown. Use this as your starting point to try out the following:
+We set up this "highly sophisticated" document to reflect the default features and formatting already available in RMarkdown. Use this as your starting point to try out the following:
 
 -   Transition an RMarkdown file into quarto
 
@@ -31,7 +33,7 @@ We set up this highly sophisticated document to reflect the default features and
 
 Quarto processes .qmd files similarly to .rmd files but takes a final step to process in pandoc that allows for some additional features to be included (e.g. super easy inclusion of citations).
 
-![](<https://quarto.org/docs/get-started/hello/images/rstudio-qmd-how-it-works.png>)
+![](https://quarto.org/docs/get-started/hello/images/rstudio-qmd-how-it-works.png)
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -95,5 +97,3 @@ Kerr, L.A., Cadrin, S.X. and Secor, D.H., 2010. The role of spatial dynamics in 
 
 Pershing, A.J., Alexander, M.A., Hernandez, C.M., Kerr, L.A., Le Bris, A., Mills, K.E., Nye, J.A., Record, N.R., Scannell, H.A., Scott, J.D. and Sherwood, G.D., 2015. Slow adaptation in the face of rapid warming leads to collapse of the Gulf of Maine cod fishery. *Science*, *350*(6262), pp.809-812. [DOI: 10.1126/science.aac9819](https://doi.org/10.1126/science.aac9819)
 
-[\
-](https://www.science.org/doi/full/10.1126/science.aac9819# "Metrics")
