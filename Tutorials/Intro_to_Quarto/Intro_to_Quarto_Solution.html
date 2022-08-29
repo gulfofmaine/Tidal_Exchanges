@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2022-08-09">
 
-<title>Intro to Quarto: quarto file (solution)</title>
+<title>Intro to Quarto: quarto file (main solution)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -124,7 +124,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Intro to Quarto: quarto file (solution)</h1>
+<h1 class="title">Intro to Quarto: quarto file (main solution)</h1>
 </div>
 
 
@@ -176,7 +176,13 @@ div.csl-indent {
 <li><a href="https://quarto.org/docs/get-started/">Installing Quarto</a></li>
 <li><a href="https://www.apreshill.com/blog/2022-04-we-dont-talk-about-quarto/">Friendly introduction to quartos features from Allison Hill</a></li>
 <li><a href="https://quarto.org/docs/gallery/">Example gallery</a></li>
+<li><a href="https://www.rstudio.com/conference/2022/keynotes/collaborate-with-quarto/">RStudio Conference Keynote by Mine Çetinkaya-Rundel and Julia Steward Lowndes</a></li>
 </ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://pbs.twimg.com/media/FZ0ux-gXwAMUF0U.jpg" class="img-fluid figure-img" alt="Twitter post by Jonathan Kitt with the phrase 'Me, still learning Rmarkdown... quarto, quarto everywhere.'" width="551"></p>
+</figure>
+</div>
 </section>
 </section>
 <section id="why-quarto" class="level1">
@@ -184,7 +190,7 @@ div.csl-indent {
 <p>If you already use markdown or RMarkdown, you may ask yourself “why switch to quarto?” As new quarto users, our switch has been mostly driven by improved access to a wide variety of formatting options and tools to make the code and documents we already write better.</p>
 <section id="this-tutorial" class="level4">
 <h4 class="anchored" data-anchor-id="this-tutorial">This tutorial</h4>
-<p>We set up this highly sophisticated document to reflect the default features and formatting already available in RMarkdown. Use this as your starting point to try out the following:</p>
+<p>We set up this “highly sophisticated” document to reflect the default features and formatting already available in RMarkdown. Use this as your starting point to try out the following:</p>
 <ul>
 <li><p>Transition an RMarkdown file into quarto</p></li>
 <li><p>Set different formatting for PDF vs.&nbsp;HTML outputs</p></li>
@@ -236,7 +242,7 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p><span style="     color: black !important;"><strong>Fun fact:</strong> When using YAML tags in code chunks you need to use the hashpipe</span> <code>#|</code> <span style="     color: black !important;">and there MUST be a space before the tag (e.g.&nbsp;‘warning:’ above) and the setting for the tag (e.g.&nbsp;‘false’ above) otherwise you will get fun messages that this failed.</span></p>
+<p><span style="     color: black !important;"><strong>Fun fact:</strong> When using YAML keys in code chunks you need to use the hashpipe</span> <code>#|</code> <span style="     color: black !important;">and there MUST be a space before the key (e.g.&nbsp;‘warning:’ above) and the setting for the key (e.g.&nbsp;‘false’ above) otherwise you will get fun messages that this failed.</span></p>
 <p>Note that the echo = FALSE parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
@@ -277,8 +283,26 @@ y =  m_sx + \beta_s
 <h2 class="anchored" data-anchor-id="and-more-text">And more text!</h2>
 <p>Here is an example paragraph. Isn’t it great. Sometimes we cite literature in our text like this <span class="citation" data-cites="kerr2010 pershing2015">(<a href="#ref-kerr2010" role="doc-biblioref">Kerr, Cadrin, and Secor 2010</a>; <a href="#ref-pershing2015" role="doc-biblioref">Pershing et al. 2015</a>)</span>. But then, we need to include a references section. We may also mention the results shown in figures (<a href="#fig-press-temp">Figure&nbsp;1</a>, 2, 3) and discuss the calculations in <a href="#eq-mxb">Equation&nbsp;1</a>.</p>
 <p><span style="     color: black !important;">No more need to compile the reference section ourselves, now it is automatically generated to include only the pandoc references in the text above.</span></p>
-
 </section>
+</section>
+<section id="colorblacktexttry-it-yourself" class="level1">
+<h1><span class="math inline">\(\color{black}{\text{Try it yourself}}\)</span></h1>
+<p><span style="     color: black !important;">Now that we’ve covered some of the basics take our ‘Intro_to_Quarto_STARTHERE.Rmd’ file and try adapting it to use quarto. Here are a few suggestions to get you started:</span></p>
+<ul>
+<li><p><span style="     color: black !important;">First turn the .Rmd file into a .qmd file</span></p></li>
+<li><p><span style="     color: black !important;">Change the theme</span></p></li>
+<li><p><span style="     color: black !important;">Change the font or text color</span></p></li>
+<li><p><span style="     color: black !important;">Add images with alt text</span></p></li>
+<li><p><span style="     color: black !important;">Change a plot figure</span></p></li>
+<li><p><span style="     color: black !important;">Add a new plot with a caption and automatic figure numbering</span></p></li>
+<li><p><span style="     color: black !important;">Add alt-text to a plot</span></p></li>
+<li><p><span style="     color: black !important;">Resize an image or plot</span></p></li>
+<li><p><span style="     color: black !important;">Change the type of document generated</span></p></li>
+<li><p><span style="     color: black !important;">Add different formatting options for HTML vs.&nbsp;PDF outputs</span></p></li>
+<li><p><span style="     color: black !important;">Add a new citation to the text and reference list</span></p></li>
+</ul>
+<p><span style="     color: black !important;">When you are done, add yourself to the authors key in the YAML header of your new .qmd file and upload a copy to the ‘Tidal_Exchanges/Tutorials/Intro_to_Quarto_Solution_files’ folder on GitHub so everyone can see your quarto solution! Be sure to include your last name in the file name (e.g.&nbsp;Hart_Intro_to_Quarto_Solution.qmd)</span></p>
+
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">

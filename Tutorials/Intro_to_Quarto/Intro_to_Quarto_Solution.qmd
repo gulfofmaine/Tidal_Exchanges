@@ -1,5 +1,5 @@
 ---
-title: "Intro to Quarto: quarto file (solution)"
+title: "Intro to Quarto: quarto file (main solution)"
 date: "2022-08-09"
 authors: A.Hart, A.Kemberling
 editor: visual
@@ -17,7 +17,8 @@ bibliography: references.bib
 
 -   **include a picture of the final YAML header here so the knitted document is fully contained**
 
--  `r kableExtra::text_spec("**Note:** Indents matter, if you aren't seeing the result you expect, you may not have indented your header correctly or you may have added the header under the wrong sub-section. Look to examples for help!", color="black")`
+-   `r kableExtra::text_spec("**Note:** Indents matter, if you aren't seeing the result you expect, you may not have indented your header correctly or you may have added the header under the wrong sub-section. Look to examples for help!", color="black")`
+
 -   `r kableExtra::text_spec("**fontcolor:** can be used to set the font color for the entire document. To counteract this in the output to show new additions to the text in black we used LaTex syntax for the section headers and in-line code execution to change paragraph coloring.", color="black")`
 
 ## $\color{black}{\text{Where to look for help}}$
@@ -32,9 +33,12 @@ bibliography: references.bib
 
 `r kableExtra::text_spec("Other resources we found helpful:", color="black")`
 
--    [Installing Quarto](https://quarto.org/docs/get-started/)
+-   [Installing Quarto](https://quarto.org/docs/get-started/)
 -   [Friendly introduction to quartos features from Allison Hill](https://www.apreshill.com/blog/2022-04-we-dont-talk-about-quarto/)
--   [Example gallery]( https://quarto.org/docs/gallery/)
+-   [Example gallery](https://quarto.org/docs/gallery/)
+-   [RStudio Conference Keynote by Mine Çetinkaya-Rundel and Julia Steward Lowndes](https://www.rstudio.com/conference/2022/keynotes/collaborate-with-quarto/)
+
+![](https://pbs.twimg.com/media/FZ0ux-gXwAMUF0U.jpg){fig-alt="Twitter post by Jonathan Kitt with the phrase 'Me, still learning Rmarkdown... quarto, quarto everywhere.'" width="551" fig-align="center"}
 
 # Why Quarto?
 
@@ -42,7 +46,7 @@ If you already use markdown or RMarkdown, you may ask yourself "why switch to qu
 
 #### This tutorial
 
-We set up this highly sophisticated document to reflect the default features and formatting already available in RMarkdown. Use this as your starting point to try out the following:
+We set up this "highly sophisticated" document to reflect the default features and formatting already available in RMarkdown. Use this as your starting point to try out the following:
 
 -   Transition an RMarkdown file into quarto
 
@@ -96,7 +100,8 @@ You can also embed plots, for example:
 
 plot(pressure)
 ```
-`r kableExtra::text_spec("**Fun fact:** When using YAML tags in code chunks you need to use the hashpipe", color="black")` `#|` `r kableExtra::text_spec("and there MUST be a space before the tag (e.g. 'warning:' above) and the setting for the tag (e.g. 'false' above) otherwise you will get fun messages that this failed.", color="black")`
+
+`r kableExtra::text_spec("**Fun fact:** When using YAML keys in code chunks you need to use the hashpipe", color="black")` `#|` `r kableExtra::text_spec("and there MUST be a space before the key (e.g. 'warning:' above) and the setting for the key (e.g. 'false' above) otherwise you will get fun messages that this failed.", color="black")`
 
 Note that the echo = FALSE parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
@@ -119,19 +124,47 @@ penguins %>%
 Figure 3: Another example plot identical to Figure 2 but looking at a different penguin species.
 
 ## Here is a lazy equation
+
 `r kableExtra::text_spec("LaTex formatting can be used to format a nice equation indexed by species of penguin 's'. Take a look at the .qmd file to see how we embedded and numbered this equation (equation labels must start with '#eq-').",color="black")`
 
 $$ 
 y =  m_sx + \beta_s 
-$${#eq-mxb}
+$$ {#eq-mxb}
 
 ## $\color{black}{\text{Adding citations}}$
 
 `r kableExtra::text_spec("In visual editor mode you can select Insert --> Citation --> select source for your citation, try selecting the 'DOI' option and provide the DOIs from the .Rmd document to automatically make these available. Then all you need to do is use pandoc citation syntax ([@ Author2022; @ Author2020] with no space between @ and the author tag) in the text. When you render the document these citations will automatically be added to the auto-generated Reference list. We can use similar syntax and figure labels to automatically reference figures in the text (e.g. removing the space from '@ fig-press-temp' will result in 'Figure 1' being added in the corresponding location of the output). Equation labels may also be referenced in this way.", color="black")`
-
 
 ## And more text!
 
 Here is an example paragraph. Isn't it great. Sometimes we cite literature in our text like this [@kerr2010; @pershing2015]. But then, we need to include a references section. We may also mention the results shown in figures (@fig-press-temp, 2, 3) and discuss the calculations in @eq-mxb.
 
 `r kableExtra::text_spec("No more need to compile the reference section ourselves, now it is automatically generated to include only the pandoc references in the text above.", color="black")`
+
+# $\color{black}{\text{Try it yourself}}$
+
+`r kableExtra::text_spec("Now that we've covered some of the basics take our 'Intro_to_Quarto_STARTHERE.Rmd' file and try adapting it to use quarto. Here are a few suggestions to get you started:", color = "black")`
+
+-   `r kableExtra::text_spec("First turn the .Rmd file into a .qmd file", color="black")`
+
+-   `r kableExtra::text_spec("Change the theme", color="black")`
+
+-   `r kableExtra::text_spec("Change the font or text color", color="black")`
+
+-   `r kableExtra::text_spec("Add images with alt text", color = "black")`
+
+-   `r kableExtra::text_spec("Change a plot figure", color="black")`
+
+-   `r kableExtra::text_spec("Add a new plot with a caption and automatic figure numbering", color="black")`
+
+-   `r kableExtra::text_spec("Add alt-text to a plot", color="black")`
+
+-   `r kableExtra::text_spec("Resize an image or plot", color="black")`
+
+-   `r kableExtra::text_spec("Change the type of document generated", color="black")`
+
+-   `r kableExtra::text_spec("Add different formatting options for HTML vs. PDF outputs", color="black")`
+
+-   `r kableExtra::text_spec("Add a new citation to the text and reference list", color="black")`
+
+`r kableExtra::text_spec("When you are done, add yourself to the authors key in the YAML header of your new .qmd file and upload a copy to the 'Tidal_Exchanges/Tutorials/Intro_to_Quarto_Solution_files' folder on GitHub so everyone can see your quarto solution! Be sure to include your last name in the file name (e.g. Hart_Intro_to_Quarto_Solution.qmd)", color="black")`
