@@ -1,8 +1,5 @@
 # Onboarding 
 
-<<<<<<< HEAD
-My personal contribution that will change the onboarding experience for everyone
-=======
 Here are a few items to take care of when you join the lab!
 
 ## To Do List

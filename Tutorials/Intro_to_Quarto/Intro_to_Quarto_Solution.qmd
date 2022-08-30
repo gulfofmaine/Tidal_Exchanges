@@ -9,6 +9,14 @@ format:
 bibliography: references.bib
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) 
+library(tidyverse) 
+library(palmerpenguins)
+```
+
+## 
+
 # $\color{black}{\text{Our solution}}$
 
 `r kableExtra::text_spec("This document highlights the features we employed to transition the 'Intro_to_Quarto_STARTHERE.Rmd' file to quarto, but the possibilities are endless. Try out some of the features to see what formatting options work best for your needs. **Note:** new text we added to this document is in black, while everything else from the .Rmd file is in gray.", color = "black")`
@@ -17,14 +25,15 @@ bibliography: references.bib
 
 -   **include a picture of the final YAML header here so the knitted document is fully contained**
 
--  `r kableExtra::text_spec("**Note:** Indents matter, if you aren't seeing the result you expect, you may not have indented your header correctly or you may have added the header under the wrong sub-section. Look to examples for help!", color="black")`
+-   `r kableExtra::text_spec("**Note:** Indents matter, if you aren't seeing the result you expect, you may not have indented your header correctly or you may have added the header under the wrong sub-section. Look to examples for help!", color="black")`
+
 -   `r kableExtra::text_spec("**fontcolor:** can be used to set the font color for the entire document. To counteract this in the output to show new additions to the text in black we used LaTex syntax for the section headers and in-line code execution to change paragraph coloring.", color="black")`
 
 ## $\color{black}{\text{Where to look for help}}$
 
 `r kableExtra::text_spec("Quarto is still relatively new so you may not find readily available examples for all features, here are some of the places we looked for help:", color="black")`
 
--   `r kableExtra::text_spec("**Twitter:** New websites built using quarto and other resources are popping up every day", color="black")`
+-   `r kableExtra::text_spec("**Twitter:** New websites built using quarto and other resources are popping up every day. There is also twitter account that produces helpful tips for learning quarto, a every day. @quarto_pub", color="black")`
 -   `r kableExtra::text_spec("**HTML:** If you find a cool html widget or website feature/format there is a good chance you can replicate it in quarto by directly embedding HTML tags in .Rmd and .qmd documents. Try googling for HTML examples instead of quarto.", color="black")`
 -   `r kableExtra::text_spec("**CSS:** CSS files are used to govern the formatting of websites and can be provided in the YAML header of .qmd files to format the html output. There are lots of resources to help setup and customize CSS files if you can't find a pre-built format that you like.", color="black")`
 -   `r kableExtra::text_spec("**Markdown & RMarkdown:** Many of the existing markdown and R markdown features can be leveraged in quarto, if you can't figure out how to do something in quarto try using the markdown syntax your are already familiar with.", color="black")`
@@ -32,13 +41,15 @@ bibliography: references.bib
 
 `r kableExtra::text_spec("Other resources we found helpful:", color="black")`
 
--    [Installing Quarto](https://quarto.org/docs/get-started/)
+-   [Installing Quarto](https://quarto.org/docs/get-started/)
 -   [Friendly introduction to quartos features from Allison Hill](https://www.apreshill.com/blog/2022-04-we-dont-talk-about-quarto/)
--   [Example gallery]( https://quarto.org/docs/gallery/)
+-   [Example gallery](https://quarto.org/docs/gallery/)
 
 # Why Quarto?
 
 If you already use markdown or RMarkdown, you may ask yourself "why switch to quarto?" As new quarto users, our switch has been mostly driven by improved access to a wide variety of formatting options and tools to make the code and documents we already write better.
+
+This switch **also** revealed a lot of Rmarkdown tricks that we were not aware of, that carry over to Quarto as well.
 
 #### This tutorial
 
@@ -60,27 +71,42 @@ We set up this highly sophisticated document to reflect the default features and
 
 # All the example content:
 
-Quarto processes .qmd files similarly to .rmd files but takes a final step to process in pandoc that allows for some additional features to be included (e.g. super easy inclusion of citations).
+# RMarkdown: The familiar
 
-`r kableExtra::text_spec("Take a look at the .qmd document here to see how we added alt text and resized this image.", color="black")`
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see [their documentation page](http://rmarkdown.rstudio.com)
 
-![](https://quarto.org/docs/get-started/hello/images/rstudio-qmd-how-it-works.png "Processing sequence to render quarto documents"){width="70%" fig-align="left"}
+When you click the Knit button a document isgenerated that includes both the formatted text content as well as the output of any embedded R code chunks within the document.
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE) 
-library(tidyverse) 
-library(palmerpenguins)
-```
-
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-
-When you click the Knit button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+You can embed an R code chunk like this:
 
 ```{r cars}
 summary(cars)
 ```
+
+### Behind the scenes:
+
+When you press the `knit` button in Rstudio, the following chain of events unfolds behind the scene:
+
+\
+![](images/paste-00D21510.png)
+
+[source video](https://www.youtube.com/watch?v=yvi5uXQMvu4)
+
+# Quarto: The Successor
+
+Quarto processes .qmd files similarly to .rmd files, and should feel very familiar.
+
+`r kableExtra::text_spec("Take a look at the .qmd document here to see how we added alt text and resized this image.", color="black")`
+
+![](images/paste-756B1B96.png)
+
+The **two main differences** come from an effort to separate that require coding languages (like R, python, julia) from the steps that create/format the text publishing. An effort to make Quarto more accessible to other programming languages.
+
+As an example: here is how quarto achieves the execution of python code:
+
+![](images/paste-42BA8BB2.png)
+
+This same workflow can be achieved without needing a .qmd file at all, working directly from a jupyter notebook.
 
 ## Including Plots
 
@@ -96,6 +122,7 @@ You can also embed plots, for example:
 
 plot(pressure)
 ```
+
 `r kableExtra::text_spec("**Fun fact:** When using YAML tags in code chunks you need to use the hashpipe", color="black")` `#|` `r kableExtra::text_spec("and there MUST be a space before the tag (e.g. 'warning:' above) and the setting for the tag (e.g. 'false' above) otherwise you will get fun messages that this failed.", color="black")`
 
 Note that the echo = FALSE parameter was added to the code chunk to prevent printing of the R code that generated the plot.
@@ -119,16 +146,16 @@ penguins %>%
 Figure 3: Another example plot identical to Figure 2 but looking at a different penguin species.
 
 ## Here is a lazy equation
+
 `r kableExtra::text_spec("LaTex formatting can be used to format a nice equation indexed by species of penguin 's'. Take a look at the .qmd file to see how we embedded and numbered this equation (equation labels must start with '#eq-').",color="black")`
 
 $$ 
 y =  m_sx + \beta_s 
-$${#eq-mxb}
+$$ {#eq-mxb}
 
 ## $\color{black}{\text{Adding citations}}$
 
 `r kableExtra::text_spec("In visual editor mode you can select Insert --> Citation --> select source for your citation, try selecting the 'DOI' option and provide the DOIs from the .Rmd document to automatically make these available. Then all you need to do is use pandoc citation syntax ([@ Author2022; @ Author2020] with no space between @ and the author tag) in the text. When you render the document these citations will automatically be added to the auto-generated Reference list. We can use similar syntax and figure labels to automatically reference figures in the text (e.g. removing the space from '@ fig-press-temp' will result in 'Figure 1' being added in the corresponding location of the output). Equation labels may also be referenced in this way.", color="black")`
-
 
 ## And more text!
 

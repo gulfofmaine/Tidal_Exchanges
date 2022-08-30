@@ -26,13 +26,13 @@ library(purrr)
 library(magrittr)
 ```
 
----
+------------------------------------------------------------------------
 
 ## What is \`purrr\`
 
 > In a nutshell, *purrr enhances R's functional programming toolkit by providing a complete and consistent set of tools for working with functions and vectors*.
 
----
+------------------------------------------------------------------------
 
 ## What do purrr does?
 
@@ -40,7 +40,7 @@ library(magrittr)
 
 Common uses include replacing \`for\` loops, or other repetative/iterative tasks.
 
----
+------------------------------------------------------------------------
 
 ## `purrr::map()`
 
@@ -50,7 +50,7 @@ Common uses include replacing \`for\` loops, or other repetative/iterative tasks
 
 -   .f : A function, formula, or vector
 
----
+------------------------------------------------------------------------
 
 ## Common Repetitive Tasks
 
@@ -67,7 +67,7 @@ adelie_mod <- lm(bill_length_mm ~ body_mass_g, data = adelie)
 
 ```
 
----
+------------------------------------------------------------------------
 
 ### Single Model Results
 
@@ -76,7 +76,7 @@ adelie_mod <- lm(bill_length_mm ~ body_mass_g, data = adelie)
 broom::tidy(adelie_mod) %>% gt::gt()
 ```
 
----
+------------------------------------------------------------------------
 
 ## Iterative tasks using `for`
 
@@ -100,7 +100,7 @@ for (penguin_i in 1:length(pen_spec)) {
 
 ```
 
----
+------------------------------------------------------------------------
 
 ### for loop results
 
@@ -110,7 +110,7 @@ broom::tidy(pen_models$Adelie) %>%
   gt::gt()
 ```
 
----
+------------------------------------------------------------------------
 
 ## Example: `purrr::map()`
 
@@ -131,7 +131,7 @@ spec_models_2 <- map(pen_spec, model_species)
 
 ```
 
----
+------------------------------------------------------------------------
 
 ### `purrr::map()` Results
 
@@ -141,7 +141,7 @@ broom::tidy(spec_models_2$Adelie) %>%
   gt::gt()
 ```
 
----
+------------------------------------------------------------------------
 
 ## `purrr::map_dfr()`
 
@@ -161,7 +161,7 @@ spec_models_df <- map_dfr(pen_spec, function(x){
 
 ```
 
----
+------------------------------------------------------------------------
 
 ### \`map_dfr()\` Results
 
