@@ -18,11 +18,9 @@ params:
 bibliography: references.bib
 ---
 
-# $\color{black}{\text{Our solutions}}$
+# Our solutions
 
 This document highlights the features we employed to transition the 'Intro_to_Quarto_STARTHERE.Rmd' file to quarto, but the possibilities are endless. Try out some of the features to see what formatting options work best for your needs.
-
-`r kableExtra::text_spec("**Note:**Comments/remarks/tips we added to this document is in in gray.", color = "darkgray")`
 
 # How we set up the YAML header
 
@@ -32,7 +30,7 @@ The following screenshot contains the YAML content for this document:
 
 -   **Note:** Indents matter, if you aren't seeing the result you expect, you may not have indented your header correctly or you may have added the header under the wrong sub-section. Look to examples for help!"
 
--   **fontcolor:** can be used to set the font color for the entire document. To counteract this in the output to show new additions to the text in black we used LaTex syntax for the section headers and in-line code execution to change paragraph coloring.
+-   **fontcolor:** can be used to set the font color for the entire document. You can also use LaTex syntax or in-line code execution (e.g. use `kablextra`) to change font coloring for specific chunks of text.
 
 ## Where to look for help
 
@@ -44,7 +42,6 @@ Quarto is still relatively new so you may not find readily available examples fo
 -   [RStudio Conference Keynote by Mine Çetinkaya-Rundel and Julia Steward Lowndes](https://www.rstudio.com/conference/2022/keynotes/collaborate-with-quarto/)
 -   [Welcome to Quarto Workshop](https://www.youtube.com/watch?v=yvi5uXQMvu4)
 
-
 Other resources we found helpful for extending quarto concepts:
 
 -   **Twitter:** New websites built using quarto and other resources are popping up every day. There is also twitter account that produces helpful tips for learning quarto, a every day. the twitter account is `@quarto_pub`
@@ -52,6 +49,8 @@ Other resources we found helpful for extending quarto concepts:
 -   **CSS:** CSS files are used to govern the formatting of websites and can be provided in the YAML header of .qmd files to format the html output. There are lots of resources to help setup and customize CSS files if you can't find a pre-built format that you like.
 -   **Markdown & RMarkdown:** Many of the existing markdown and R markdown features can be leveraged in quarto, if you can't figure out how to do something in quarto try using the markdown syntax your are already familiar with.
 -   **LaTex:** A lot of the quarto text and equation formatting options pull from LaTex tools so looking for examples in LaTex tools may help point you in the right direction. This is how we learned how to change section header text color.
+
+------------------------------------------------------------------------
 
 ![](https://pbs.twimg.com/media/FZ0ux-gXwAMUF0U.jpg){fig-alt="Twitter post by Jonathan Kitt with the phrase 'Me, still learning Rmarkdown... quarto, quarto everywhere.'" width="551" fig-align="center"}
 
@@ -119,7 +118,7 @@ This value can be accessed throughout the rest of the document. This is useful f
 
 Rmarkdown and Quarto both support the inclusion of in-line embedded figures, for example:
 
-Automatically add figure numbers using `#| label`. labels must start with 'fig-') and captions via `#|fig-cap` hashpipe syntax:
+Automatically add figure numbers using `#| label`. labels must start with 'fig-') and captions via `#| fig-cap` hashpipe syntax:
 
 ```{r}
 #| label: fig-press-temp
@@ -135,8 +134,6 @@ plot(pressure)
 ```
 
 **Fun fact:** When using YAML keys within code chunks you need to use the "hashpipe" `#|` and there **MUST** be a space before the key (e.g. 'warning:' above) and the setting for the key (e.g. 'false' above) otherwise you will get fun messages that this failed. Quarto is backwards-compatible to YAML options within the curly brackets, so use whichever suits your style.
-
-`r kableExtra::text_spec("Note that the echo = FALSE parameter was added to the code chunk to prevent printing of the R code that generated the plot.", color = "darkgray")`
 
 ```{r}
 #| label: fig-adelie
@@ -172,7 +169,7 @@ plot(pressure)
 
 ### Alt Text
 
-Alt text is a way of to increase the accessibility of your work. It allows accessibility tools like screen readers to communicate what your images and figures contain for those who cannot view them.
+Alt text is a way to increase the accessibility of your work. It allows accessibility tools like screen readers to communicate what your images and figures contain for those who cannot view them.
 
 To add alt. text simply add the text to the code chunk for the figure, just as you would its label and caption:
 
@@ -253,29 +250,29 @@ ggplot(diamonds, aes(carat, depth, fill = clarity)) +
 
 ## Formatted Math Equations
 
-\`LaTex formatting can be used to format a nice equation indexed by species of penguin 's'. Take a look at the .qmd file to see how we embedded and numbered this equation (equation labels must start with '#eq-')
+LaTex formatting can be used to format a nice equation indexed by species of penguin 's'. Take a look at the .qmd file to see how we embedded and numbered this equation (equation labels must start with '#eq-')
 
 $$ 
 y =  m_sx + \beta_s 
 $$ {#eq-mxb}
 
-## Adding Citations
-
+## Citations & Figure Labels
+### Adding Citations
 In visual editor mode you can select Insert --\> Citation --\> select source for your citation, try selecting the 'DOI' option and provide the DOIs from the .Rmd document to automatically make these available. Then all you need to do is use pandoc citation syntax `([@Author2022; @ uthor2020]` with no space between `@` and the author tag) in the text. When you render the document these citations will automatically be added to the auto-generated Reference list.
 
 Rstudio also supports auto complete for citation look-up. Simply begin typing the citation with an `@` within closed brackets `[]`, with your cursor after the `@`. A window will pop up that searches for references matching the author or keyword that you type after the `@`.
 
-## Figure Labels
+### Adding Figure Labels
 
 We can use similar syntax to citations for figure labels to automatically reference figures in the text (e.g. removing the space from '\@ fig-press-temp' will result in 'Figure 1' being added in the corresponding location of the output). Equation labels may also be referenced in this way.
 
-## Citation and Figure Referencing
+### Including Citation & Figure References in Text
 
 Here is an example paragraph. Isn't it great. Sometimes we cite literature in our text like this [@kerr2010; @pershing2015]. But then, we need to include a references section. We may also mention the results shown in figures (@fig-press-temp, @fig-adelie, @fig-chins) and discuss the calculations in @eq-mxb.
 
-`r kableExtra::text_spec("No more need to compile the reference section ourselves, now it is automatically generated to include only the pandoc references in the text above.", color="black")`
+No more need to compile the reference section ourselves, now it is automatically generated to include only the pandoc references in the text above.
 
-## In Text Evaluation
+## In-Text Evaluations
 
 Sometimes you want to include values for specific summary statistics, but want to ensure that they match what the code says. One way to achieve this is in-text evaluations of R code:
 
@@ -291,7 +288,7 @@ lm_slope <- lm_coef[[2]]
 
 The slope of this randomly generated relationship is `r lm_slope`.
 
-`r kableExtra::text_spec("I can now sleep at night because I know this value isn't just hand typed, and will always reflect the outcome of this rigorous analysis.", color = "darkgray")`
+I can now sleep at night because I know this value isn't just hand typed, and will always reflect the outcome of this rigorous analysis.
 
 # Try it yourself
 

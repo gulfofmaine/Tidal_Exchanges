@@ -60,13 +60,12 @@ We set up this "highly sophisticated" document to reflect the default features a
 
 Rmarkdown and Quarto both support the inclusion of in-line embedded figures, for example:
 
-```{r pressure, echo=FALSE}
+```{r pressure}
 plot(pressure)
 ```
 
 Figure 1: An example plot. I am sure you can add figure captions in an RMarkdown document but we are sticking to lazy examples here with minimal formatting.
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
 ```{r, message=FALSE, warning=FALSE}
 library(tidyverse)
@@ -124,11 +123,11 @@ Here is a lazy equation:
 
 Wouldn't it be nice to index `m` and `b` variables by species of penguin?
 
-## In-Text Evaluations
 
+## Citations & Figure Labels
 Here is an example paragraph. Isn't it great. Sometimes we cite literature in our text like this (Kerr et al. 2010; Pershing et al. 2015). But then, we need to include a references section. We may also mention the results shown in figures (Figure 1, 2, 3) and discuss the calculations in Equation 1.
 
-**In text evaluation for Summary stats:**
+## In-Text Evaluations 
 
 Sometimes you want to include values for specific summary statistics, but want to ensure that they match what the code says. It would be great to just reference an R object right in the text so that it is always linked to the data...
 
