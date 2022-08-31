@@ -60,3 +60,9 @@ microsoft-outlook-email
 data-platforms
 code-platforms
 python-jupyter
+to-do-list
+communication-1
+hr-support
+it-support
+gmri-resources
+intranet

@@ -37,7 +37,6 @@ Beginning on April 7, 2022 this group will meet the first Thursday of each month
 * 10/06/22: Introduction to quarto
 * 11/03/22: TBD - Jerelle will lead
 * 12/01/22: TBD
->>>>>>> b71e6b9a0af584633a0935b9e8c9644b99e98982
 
 ----
 

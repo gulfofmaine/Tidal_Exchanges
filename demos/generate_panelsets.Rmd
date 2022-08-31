@@ -8,8 +8,6 @@ output:
     toc_float:
         collapsed: TRUE
     code_folding: show
-editor_options: 
-  chunk_output_type: console
 knit: (function(input, ...) {rmarkdown::render(input)})
 ---
 
@@ -25,7 +23,7 @@ This markdown details a common workflow simplification in two parts: 1. Writing 
 
 ## Inspiration
 
-A common repetetive task when doing any multi-species analysis is exploring the data in a similar way, but for each species. Using the [Palmer Penguins Data]() as an example, we might want to see the relationship between bill length and flipper length, but for each species and maybe facet it for each island.
+A common repetitive task when doing any multi-species analysis is exploring the data in a similar way, but for each species. Using the [Palmer Penguins Data]() as an example, we might want to see the relationship between bill length and flipper length, but for each species and maybe facet it for each island.
 
 ### Simple Example:
 
