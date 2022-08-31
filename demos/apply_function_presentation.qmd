@@ -1,0 +1,172 @@
+---
+title: "Functional Programming"
+format: revealjs
+editor: visual
+execute: 
+  echo: true
+  warning: false
+  message: false
+  fig.height: 5
+  fig.width: 6
+  fig.align: "center"
+  comment: ""
+---
+
+## `apply()` functions and Functional Programming
+
+Simplify your code using vectorized functions from the `purrr` package, part of the tidyverse.
+
+[purrr Cheatsheet](https://github.com/rstudio/cheatsheets/blob/main/purrr.pdf)
+
+```{r}
+# Packages for demo
+library(palmerpenguins)
+library(dplyr)
+library(purrr)
+library(magrittr)
+```
+
+------------------------------------------------------------------------
+
+## What is \`purrr\`
+
+> In a nutshell, *purrr enhances R's functional programming toolkit by providing a complete and consistent set of tools for working with functions and vectors*.
+
+------------------------------------------------------------------------
+
+## What do purrr does?
+
+`purrr's` "`map()`" family of functions transform their inputs by applying a function to each element of a list/vector, and return an object of the same length
+
+Common uses include replacing \`for\` loops, or other repetative/iterative tasks.
+
+------------------------------------------------------------------------
+
+## `purrr::map()`
+
+`purrr::map()` works the same as `base::lapply()`. It takes the following arguments:
+
+-   .x : A list or atomic vector (think `list()` or `c()` )
+
+-   .f : A function, formula, or vector
+
+------------------------------------------------------------------------
+
+## Common Repetitive Tasks
+
+The penguins dataset contains data on 3 species of penguin. A reasonable thing a researcher might want to do is perform a regression for each species.
+
+The most obvious/tedious way to do this is to code out each one
+
+```{r}
+# Pull data for one species
+adelie <- filter(penguins, species == "Adelie")
+
+# Model bill length based on body mass
+adelie_mod <- lm(bill_length_mm ~ body_mass_g, data = adelie)
+
+```
+
+------------------------------------------------------------------------
+
+### Single Model Results
+
+```{r}
+# Quick summary
+broom::tidy(adelie_mod) %>% gt::gt()
+```
+
+------------------------------------------------------------------------
+
+## Iterative tasks using `for`
+
+One way to avoid rewriting the code for each species is to use a for loop. These work by iterating through a vector using an index to subset data and make assignments.
+
+```{r}
+# Make a list of species
+pen_spec <- penguins %>% split(.$species)
+
+# Make a list to store the linear models
+pen_models <- vector(mode = "list", length = length(pen_spec))
+pen_models <- setNames(pen_models, names(pen_spec))
+
+# Loop through each one
+for (penguin_i in 1:length(pen_spec)) {
+  pen_models[[penguin_i]] <- lm(bill_length_mm ~ body_mass_g, 
+                                data = pen_spec[[penguin_i]])
+  
+}
+
+
+```
+
+------------------------------------------------------------------------
+
+### for loop results
+
+```{r}
+# Check output
+broom::tidy(pen_models$Adelie) %>% 
+  gt::gt()
+```
+
+------------------------------------------------------------------------
+
+## Example: `purrr::map()`
+
+Some of the advantages of using functional programming are:
+
+-   It avoids complicated loop indexing
+
+-   It separates what is happening (the function) from what it is performed on (the inputs)
+
+```{r}
+
+# Function
+model_species <- function(x){ lm(bill_length_mm ~ body_mass_g, data = x) }
+
+# Using map()
+spec_models_2 <- map(pen_spec, model_species)
+
+
+```
+
+------------------------------------------------------------------------
+
+### `purrr::map()` Results
+
+```{r}
+# Check output
+broom::tidy(spec_models_2$Adelie) %>% 
+  gt::gt()
+```
+
+------------------------------------------------------------------------
+
+## `purrr::map_dfr()`
+
+Another cool feature of the `purrr::map()` style functions is the `map_dfr()` variants. These return the outputs in a dataframe which makes summary tables/plots simple to generate:
+
+```{r}
+
+# Do all three, but return it as a table
+spec_models_df <- map_dfr(pen_spec, function(x){
+  # Run model
+  mod_x <- model_species(x)
+  # Get summary stats
+  output_x <- broom::tidy(mod_x)
+  # Return the stats
+  return(output_x)
+}, .id = "species") # Label each output in column "species"
+
+```
+
+------------------------------------------------------------------------
+
+### \`map_dfr()\` Results
+
+```{r}
+# Check it
+spec_models_df %>% 
+  gt::gt()
+```

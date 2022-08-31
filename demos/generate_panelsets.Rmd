@@ -1,0 +1,231 @@
+---
+title: "Self Generating Panels"
+author: "Adam A. Kemberling"
+date: '2022-06-01'
+output: 
+  html_document:
+    toc: TRUE
+    toc_float:
+        collapsed: TRUE
+    code_folding: show
+knit: (function(input, ...) {rmarkdown::render(input)})
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, comment = "")
+```
+
+# Writing Code that Writes Itself
+
+Original inspiration for this guide comes from here: [interlude one](https://interludeone.com/posts/2022-03-04-programmatically-generate-tabs-in-rmarkdown/?panelset=dream&panelset1=torgersen2)
+
+This markdown details a common workflow simplification in two parts: 1. Writing a function for repeating plots 2. Writing a function that will make tabs for each one
+
+## Inspiration
+
+A common repetitive task when doing any multi-species analysis is exploring the data in a similar way, but for each species. Using the [Palmer Penguins Data]() as an example, we might want to see the relationship between bill length and flipper length, but for each species and maybe facet it for each island.
+
+### Simple Example:
+
+For one species the code would look something like this:
+
+```{r penguins}
+library(palmerpenguins)
+library(tidyverse)
+library(gmRi)
+
+# Step 1: Filter the species
+spec_dat <- penguins %>% filter(species == "Gentoo")
+
+# Step 2: Plot Relationship
+ggplot(spec_dat, aes(bill_length_mm, flipper_length_mm, color = sex)) +
+  geom_point() +
+  facet_wrap(~island) +
+  labs(x = "Bill Length (mm)",
+       y = "Flipper Length (mm)",
+       title = "Simple Example - Gentoo Penguins",
+       subtitle = "Not a ton of code, but enough to not want to do three times...")
+ 
+  
+```
+
+`r gmRi::use_gmri_style_rmd()`
+
+## How Even Simple Code Fails to Scale
+
+Without making the plot in that simple example a function, we need to copy and paste all the code for the remaining species:
+
+```{r Adelie}
+# Step 1: Filter the species
+spec_dat <- penguins %>% filter(species == "Adelie")
+
+# Step 2: Plot Relationship
+ggplot(spec_dat, aes(bill_length_mm, flipper_length_mm, color = sex)) +
+  geom_point() +
+  facet_wrap(~island) +
+  labs(x = "Bill Length (mm)",
+       y = "Flipper Length (mm)",
+       title = "Adelie Penguins")
+  
+```
+
+```{r chinstrap}
+# Step 1: Filter the species
+spec_dat <- penguins %>% filter(species == "Chinstrap")
+
+# Step 2: Plot Relationship
+ggplot(spec_dat, aes(bill_length_mm, flipper_length_mm, color = sex)) +
+  geom_point() +
+  facet_wrap(~island) +
+  labs(x = "Bill Length (mm)",
+       y = "Flipper Length (mm)",
+       title = "Chinstrap Penguins")
+  
+```
+
+We've now repeated a bunch of code, making the markdown long. And now if we wanted to tweak the plot in some way, we would need to do it in each location, which we don't want to do because it makes more work for us. Adding insult to injury, we either have to write over the same object in the environment which can lead to problems if you mess up, or you need to create a bunch of clutter in the environment. **These are all bad patterns.**
+
+See [DRY Principal](https://deviq.com/principles/dont-repeat-yourself).
+
+## Reduce Repetition Using Abstraction
+
+One way to reduce the "copy and paste" is with a function for the plot. Functions are useful when we want to abstract a repeated process, by isolating the elements that change from those that do not.
+
+In this case the only things that change with each iteration is the species we filter the data with, and the plot text it generates. So in practice this is the only argument we need for the function:
+
+```{r}
+
+# Make a function for how the plot should look:
+plot_fun <- function(spec_id){
+  
+  # Step 1: Filter the species
+  spec_dat <- penguins %>% filter(species == spec_id)
+  
+  # Step 2: Plot Relationship
+  p <- ggplot(spec_dat, aes(bill_length_mm, flipper_length_mm, color = sex)) +
+    geom_point() +
+    facet_wrap(~island) +
+    labs(x = "Bill Length (mm)",
+         y = "Flipper Length (mm)",
+         title = paste(spec_id, "Penguins"))
+  
+  # Step 3: Return the plot as output
+  return(p)
+  
+}
+
+```
+
+# Organize Contents with Tabs/ Panels
+
+One thing I like to do that I think helps reduce the clutter in a big markdown report, is to swap out what plots display using tabs or panels.
+
+**This is what that looks like in practice:**
+
+## How do Tabs Work? {.tabset}
+
+Tabs can be created by including the text: `{tabset}` beside a header `## Header` in an rmarkdown document. Once this is done, the successive sub headers (Headers that are one `#` more than the header with `{tabset}` beside it) become their own tabs.
+
+In this example the header that starts it is `## How do Tabs Work? {.tabset}`, and the following tabs begin with: `### Gentoo` & `### Adelie`.
+
+### Gentoo
+
+```{r}
+plot_fun("Gentoo")
+```
+
+### Adelie
+
+```{r}
+plot_fun("Adelie")
+```
+
+## Panels with xaringanExtra::panelset() {.panelset}
+
+Similar to tabs, the {xaringanExtra} package allows for the use of panels. These can be created similarly using `{.panelset}` instead of tabset:
+
+```{r}
+xaringanExtra::use_panelset()
+```
+
+### Gentoo
+
+```{r}
+plot_fun("Gentoo")
+```
+
+### Chinstrap
+
+```{r}
+plot_fun("Chinstrap")
+
+```
+
+# Streamling Markdown with Generative Panels
+
+The above setup is how I had been doing it for quite some time, but I found myself creating a lot of tabs with essentially the same code in each one, which was a sign that they likely could be automated.
+
+After some googling I came across this tutorial for achieving self-generating panels: <https://interludeone.com/posts/2022-03-04-programmatically-generate-tabs-in-rmarkdown/>
+
+```{r}
+# Function to generate panels using a key word and a plot function
+plot_panelset <- function(spec, plot_fun, ...) {
+  
+  # Open panel
+  cat("::: {.panel}\n")
+  # Create header for panel name
+  cat("##", spec, "{.panel-name}\n")
+  # # Text as a plot description
+  # cat("Plot of", spec, "\n")
+  # Make plot
+  p <- plot_fun(spec, ...)
+  print(p)
+  # Add linebreak
+  cat("\n")
+  # Close panel
+  cat(":::\n")
+}
+
+```
+
+## Reducing Code with Panel Generator
+
+The key to this working is a function that takes two inputs:\
+1. The keyword that will be the name of a panel\
+2. A plotting function that takes that same keyword
+
+Once those pieces exist it simply is a matter of looping through them in an r chunk with `results = "asis"` and sandwiching it all between these strange looking "fenced divs".
+
+    ::::: {.panelset}
+
+
+    # ```{r, results = "asis"}
+    # purrr::walk(
+    #   .x = c("Gentoo", "Chinstrap", "Adelie"),
+    #   .f = plot_panelset,
+    #   plot_fun = plot_fun
+    # )
+    # ```
+
+
+    :::::
+
+The code above is all that is needed to generate the following set of panels:
+
+::: panelset
+```{r, results = "asis", echo = TRUE, message=FALSE, warning = FALSE}
+purrr::walk(
+  .x = c("Gentoo", "Chinstrap", "Adelie"), 
+  .f = plot_panelset,
+  plot_fun = plot_fun
+)
+```
+:::
+
+### Request for help:
+
+I feel pretty confident that this can be done with {.tabset} which would avoid loading in a package or relying on `xaringanExtra::panelset()`.
+
+Here is some materials on the alternative way to encode headers/tabs/panels using [pandoc's fenced div's](https://pandoc.org/MANUAL.html#extension-fenced_divs) which is how the panelset function I made created panels:
+
+Feel free to mess around and figure this out for the group good!
