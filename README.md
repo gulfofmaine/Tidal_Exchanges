@@ -35,7 +35,8 @@ Beginning on April 7, 2022 this group will meet the first Thursday of each month
 * 08/04/22: Science communication tools & tricks: [hosting Rmd html output on GitHub](https://mbounthavong.com/blog/2022/7/30/hosting-a-r-markdown-html-file-on-a-github-page), creating Github README profiles([instructions](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme), [examples](https://github.com/abhisheknaiidu/awesome-github-profile-readme), [README generator](https://rahuldkjain.github.io/gh-profile-readme-generator/)), [adding spinner as figures load in shiny](https://daattali.com/shiny/shinycssloaders-demo/), [viridis color scales](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html) and [checking plots for colorblind interpretation](https://cran.r-project.org/web/packages/colorBlindness/vignettes/colorBlindness.html), [creating slides in xaringan](https://arm.rbind.io/slides/xaringan.html#1)
 * 09/01/22: Introduction to quarto - Adam and Amanda
 * 10/06/22: Jerelle & Zach share bigeye tuna microchemistry standardization work
-* 11/03/22: Mapping for the [30daymap challenge](https://30daymapchallenge.com/)
+* 11/03/22: Mapping for the [30daymap challenge](https://30daymapchallenge.com/), shared resources included [TidyTuesday datasets for plotting](https://github.com/rfordatascience/tidytuesday), a [map of Westeros](https://www.cartographersguild.com/showthread.php?t=30472
+), and a cool tutorial for [3D maps in rayshader](https://www.rayshader.com/)
 * 12/01/22: Kat and Carly share a Canva tutorial & holiday shenanigans 
 
 * 01/05/23: NO MEETING THIS MONTH
