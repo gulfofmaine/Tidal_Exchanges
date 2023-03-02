@@ -40,10 +40,10 @@ Beginning on April 7, 2022 this group will meet the first Thursday of each month
 * 12/01/22: Kat and Carly share a Canva tutorial & holiday shenanigans 
 
 * 01/05/23: NO MEETING THIS MONTH
-* 02/02/23: TBD
-* 03/03/23: TBD
-* 04/06/23: TBD
-* 05/04/23: TBD
+* 02/02/23: Troubleshooting table formatting - Jamie
+* 03/03/23: Child documents in Rmarkdown - Jerelle
+* 04/06/23: Reverse engineering figures - Miguel
+* 05/04/23: Google Cloud & Google compute engine R - Andrew
 * 06/01/23: TBD
 * 07/06/23: TBD
 * 08/03/23: TBD
