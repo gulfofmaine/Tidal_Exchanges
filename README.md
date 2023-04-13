@@ -44,8 +44,8 @@ Beginning on April 7, 2022 this group will meet the first Thursday of each month
 * 03/03/23: Child documents in Rmarkdown - Jerelle
 * 04/06/23: Reverse engineering figures - Miguel
 * 05/04/23: Google Cloud & Google compute engine R - Andrew
-* 06/01/23: TBD
-* 07/06/23: TBD
+* 06/01/23: Group discussion of lab manual
+* 07/06/23: Tips & tricks
 * 08/03/23: TBD
 * 09/07/23: TBD
 * 10/05/23: TBD
