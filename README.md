@@ -32,11 +32,25 @@ Beginning on April 7, 2022 this group will meet the first Thursday of each month
 * 06/02/22: Tips & tools to make coding & open data science more accessible - Adam ([autogenerating tabs in Rmarkdown](https://interludeone.com/posts/2022-03-04-programmatically-generate-tabs-in-rmarkdown/?panelset=dream&panelset1=torgersen2![image](https://user-images.githubusercontent.com/23203046/171659296-369e3231-4fb3-48f6-a2e1-85b2bf38655e.png)
 )), Jamie ([extracting in-text citations](https://github.com/Jamie-Behan/Extract_in-text_citations)), Jerelle (Rmarkdown visual editor). 
 * 07/07/22: Apply functions ([Short intro to apply functions](https://www.guru99.com/r-apply-sapply-tapply.html)) and data wrangling with purrr ([Purrr cheat sheet](https://github.com/rstudio/cheatsheets/blob/main/purrr.pdf))
-* 08/04/22: Plotting tricks - everyone bring a trick on how to complete the annoying final polishing for plots (e.g. fixing legend labels, extra formatting steps to make things pretty, ect.)
-* 09/01/22: Science communication tools & tricks: [hosting Rmd html output on GitHub](https://mbounthavong.com/blog/2022/7/30/hosting-a-r-markdown-html-file-on-a-github-page), creating Github README profiles([instructions](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme), [examples](https://github.com/abhisheknaiidu/awesome-github-profile-readme), [README generator](https://rahuldkjain.github.io/gh-profile-readme-generator/)), [adding spinner as figures load in shiny](https://daattali.com/shiny/shinycssloaders-demo/), [viridis color scales](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html) and [checking plots for colorblind interpretation](https://cran.r-project.org/web/packages/colorBlindness/vignettes/colorBlindness.html), [creating slides in xaringan](https://arm.rbind.io/slides/xaringan.html#1)
-* 10/06/22: Introduction to quarto
-* 11/03/22: TBD - Jerelle will lead
-* 12/01/22: TBD
+* 08/04/22: Science communication tools & tricks: [hosting Rmd html output on GitHub](https://mbounthavong.com/blog/2022/7/30/hosting-a-r-markdown-html-file-on-a-github-page), creating Github README profiles([instructions](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme), [examples](https://github.com/abhisheknaiidu/awesome-github-profile-readme), [README generator](https://rahuldkjain.github.io/gh-profile-readme-generator/)), [adding spinner as figures load in shiny](https://daattali.com/shiny/shinycssloaders-demo/), [viridis color scales](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html) and [checking plots for colorblind interpretation](https://cran.r-project.org/web/packages/colorBlindness/vignettes/colorBlindness.html), [creating slides in xaringan](https://arm.rbind.io/slides/xaringan.html#1)
+* 09/01/22: Introduction to quarto - Adam and Amanda
+* 10/06/22: Jerelle & Zach share bigeye tuna microchemistry standardization work
+* 11/03/22: Mapping for the [30daymap challenge](https://30daymapchallenge.com/), shared resources included [TidyTuesday datasets for plotting](https://github.com/rfordatascience/tidytuesday), a [map of Westeros](https://www.cartographersguild.com/showthread.php?t=30472
+), and a cool tutorial for [3D maps in rayshader](https://www.rayshader.com/)
+* 12/01/22: Kat and Carly share a Canva tutorial & holiday shenanigans 
+
+* 01/05/23: NO MEETING THIS MONTH
+* 02/02/23: Troubleshooting table formatting - Jamie
+* 03/03/23: Child documents in Rmarkdown - Jerelle
+* 04/06/23: Reverse engineering figures - Miguel
+* 05/04/23: Google Cloud & Google compute engine R - Andrew: [profvis tool for visualizing computation time across different pieces of code, good for Shiny app tuning](https://rstudio.github.io/profvis/), Docker [example from Andrew here](https://github.com/aallyn/GMRI_Rocker), 
+* 06/01/23: Group discussion of lab manual
+* 07/06/23: Tips & tricks
+* 08/03/23: TBD
+* 09/07/23: TBD
+* 10/05/23: TBD
+* 11/02/23: TBD
+* 12/07/23: TBD
 
 ----
 
