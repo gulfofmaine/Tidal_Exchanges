@@ -1,8 +1,8 @@
 ---
 title: "Intro to Quarto: RMarkdown file"
-output: html_document
 date: "2022-08-09"
 authors: A.Hart, A.Kemberling
+output: html_document
 knit: (function(input, ...) {rmarkdown::render(input)})
 ---
 
