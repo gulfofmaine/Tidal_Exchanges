@@ -267,7 +267,7 @@ getwd()
 
 If your working directory file path does not end in "Intro_to_R" then you will need to change the working directory so any data we generate in the rest of this workshop is saved in the folder you created. Try setting the working directory to "Intro_to_R" using `setwd()` and editing the code below to point R to the location of this folder. Then run `getwd()` to check that you were successful.
 
-```{r}
+```{r, eval=FALSE}
 setwd("/Users/yourusername/Intro_to_R")
 
 getwd()
@@ -313,31 +313,33 @@ Pick `Paste as data.frame`:
 
 ```{r}
 data.frame(
-              stringsAsFactors = FALSE,
-                   check.names = FALSE,
-                         Breed = c("Retrievers (Labrador)","French Bulldogs",
-                                   "German Shepherd Dogs","Retrievers (Golden)",
-                                   "Bulldogs","Poodles","Beagles","Rottweilers",
-                                   "Pointers (German Shorthaired)","Dachshunds"),
-      Affectionate.With.Family = c(5L, 5L, 5L, 5L, 4L, 5L, 3L, 5L, 5L, 5L),
-      Good.With.Young.Children = c(5L, 5L, 5L, 5L, 3L, 5L, 5L, 3L, 5L, 3L),
-          Good.With.Other.Dogs = c(5L, 4L, 3L, 5L, 3L, 3L, 5L, 3L, 4L, 4L),
-                Shedding.Level = c(4L, 3L, 4L, 4L, 3L, 1L, 3L, 3L, 3L, 2L),
-       Coat.Grooming.Frequency = c(2L, 1L, 2L, 2L, 3L, 4L, 2L, 1L, 2L, 2L),
-                Drooling.Level = c(2L, 3L, 2L, 2L, 3L, 1L, 1L, 3L, 2L, 2L),
-                     Coat.Type = c("Double","Smooth","Double","Double","Smooth",
-                                   "Curly","Smooth","Smooth","Smooth","Smooth"),
-                   Coat.Length = c("Short",
-                                   "Short","Medium","Medium","Short",
-                                   "Long","Short","Short","Short","Short"),
-         Openness.To.Strangers = c(5L, 5L, 3L, 5L, 4L, 5L, 3L, 3L, 4L, 4L),
-             Playfulness.Level = c(5L, 5L, 4L, 4L, 4L, 5L, 4L, 4L, 4L, 4L),
-  `Watchdog/Protective.Nature` = c(3L, 3L, 5L, 3L, 3L, 5L, 2L, 5L, 4L, 4L),
-            Adaptability.Level = c(5L, 5L, 5L, 5L, 3L, 4L, 4L, 4L, 4L, 4L),
-            Trainability.Level = c(5L, 4L, 5L, 5L, 4L, 5L, 3L, 5L, 5L, 4L),
-                  Energy.Level = c(5L, 3L, 5L, 3L, 3L, 4L, 4L, 3L, 5L, 3L),
-                 Barking.Level = c(3L, 1L, 3L, 1L, 2L, 4L, 4L, 1L, 3L, 5L),
-      Mental.Stimulation.Needs = c(4L, 3L, 5L, 4L, 3L, 5L, 4L, 5L, 5L, 3L)
+  stringsAsFactors = FALSE,
+       check.names = FALSE,
+     `data.frame(` = c("stringsAsFactors = FALSE,",
+                       "check.names = FALSE,",
+                       "Breed = c(\"Retrievers (Labrador)\",\"French Bulldogs\",",
+                       "\"German Shepherd Dogs\",\"Retrievers (Golden)\",",
+                       "\"Bulldogs\",\"Poodles\",\"Beagles\",\"Rottweilers\",",
+                       "\"Pointers (German Shorthaired)\",\"Dachshunds\"),",
+                       "Affectionate.With.Family = c(5L, 5L, 5L, 5L, 4L, 5L, 3L, 5L, 5L, 5L),",
+                       "Good.With.Young.Children = c(5L, 5L, 5L, 5L, 3L, 5L, 5L, 3L, 5L, 3L),",
+                       "Good.With.Other.Dogs = c(5L, 4L, 3L, 5L, 3L, 3L, 5L, 3L, 4L, 4L),",
+                       "Shedding.Level = c(4L, 3L, 4L, 4L, 3L, 1L, 3L, 3L, 3L, 2L),",
+                       "Coat.Grooming.Frequency = c(2L, 1L, 2L, 2L, 3L, 4L, 2L, 1L, 2L, 2L),",
+                       "Drooling.Level = c(2L, 3L, 2L, 2L, 3L, 1L, 1L, 3L, 2L, 2L),",
+                       "Coat.Type = c(\"Double\",\"Smooth\",\"Double\",\"Double\",\"Smooth\",",
+                       "\"Curly\",\"Smooth\",\"Smooth\",\"Smooth\",\"Smooth\"),",
+                       "Coat.Length = c(\"Short\",",
+                       "\"Short\",\"Medium\",\"Medium\",\"Short\",",
+                       "\"Long\",\"Short\",\"Short\",\"Short\",\"Short\"),",
+                       "Openness.To.Strangers = c(5L, 5L, 3L, 5L, 4L, 5L, 3L, 3L, 4L, 4L),",
+                       "Playfulness.Level = c(5L, 5L, 4L, 4L, 4L, 5L, 4L, 4L, 4L, 4L),",
+                       "`Watchdog/Protective.Nature` = c(3L, 3L, 5L, 3L, 3L, 5L, 2L, 5L, 4L, 4L),",
+                       "Adaptability.Level = c(5L, 5L, 5L, 5L, 3L, 4L, 4L, 4L, 4L, 4L),",
+                       "Trainability.Level = c(5L, 4L, 5L, 5L, 4L, 5L, 3L, 5L, 5L, 4L),",
+                       "Energy.Level = c(5L, 3L, 5L, 3L, 3L, 4L, 4L, 3L, 5L, 3L),",
+                       "Barking.Level = c(3L, 1L, 3L, 1L, 2L, 4L, 4L, 1L, 3L, 5L),",
+                       "Mental.Stimulation.Needs = c(4L, 3L, 5L, 4L, 3L, 5L, 4L, 5L, 5L, 3L)",")")
 )
 ```
 
@@ -372,13 +374,24 @@ data.table::data.table(
 )
 ```
 
+```{r}
+data.table::data.table(
+             fish = c(FALSE, TRUE, TRUE, TRUE, FALSE),
+      common_name = c("cuddlefish","flying_fish",
+                      "basking_shark","mola_mola","jellyfish"),
+  largest_size_cm = c(1, 0.5, 12.3, 2.72, 36.5)
+)
+
+```
+
 ### Load data from a CSV (.csv) file
 
 First we need to save some data from the palmerpenguins R package as a .csv file, try editing the file path below to point to your "Intro_to_R" folder.
 
-```{r}
+```{r, eval=FALSE}
 library(palmerpenguins)
-write.csv(penguins, "/Users/yourusername/Downlowads/Intro_to_R/Data","penguins_data.csv")
+
+write.csv(x=penguins, file = "/Users/yourusername/Downloads/Intro_to_R/Data/penguins_data.csv")
 ```
 
 HINT: If you encountered the error "No such file or directory" ask yourself the following:
@@ -387,8 +400,8 @@ HINT: If you encountered the error "No such file or directory" ask yourself the 
 
 -   Did you spell all of the folders and file names correctly?
 
-```{r}
-
+```{r, eval=FALSE}
+# install.packages("readr")
 library(readr) # If the readr package is not loaded, uncomment and run this line of code
 penguinsCSV <- read_csv("Data/penguins_data.csv")
 ```
@@ -397,7 +410,7 @@ The text below the code gives you information about what happened when you ran t
 
 Now that you've run this code chunk, you'll be able to see "penguinsCSV" in your environment (top right). Let's see what the data looks like inline.
 
-```{r}
+```{r, eval=FALSE}
 # To look at the entire dataset, just rerun the "penguins" object or type it into the console and hit enter. You may also double click the data object in the 'Environment' tab
 penguinsCSV
 ```
@@ -406,9 +419,9 @@ R Markdown gives you a preview of the dataset and allows you to look through the
 
 ### Load data from an Excel (.xls or .xlsx) file
 
-```{r}
+```{r, eval=FALSE}
 # install.packages("readxl")
-# library("readxl") # Uncomment if package not already loaded
+library("readxl") # Uncomment if package not already loaded
 
 sheet1 <- readxl::read_excel("/Users/yourusername/Intro_to_R/Data/testExcel.xlsx", sheet = 1) # Pick sheet by number order
 sheet1
@@ -419,7 +432,7 @@ sheet2
 
 ### Load data from an RData (.rds) file
 
-```{r}
+```{r, eval=FALSE}
 practice <- readRDS(file = "/Users/yourusername/Intro_to_R/Data/testRData.rds")
 practice # Print the data you loaded to screen
 ```
