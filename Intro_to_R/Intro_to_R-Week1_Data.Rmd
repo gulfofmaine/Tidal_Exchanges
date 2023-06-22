@@ -13,7 +13,13 @@ knit: (function(input, ...) {rmarkdown::render(input)})
 
 # Learning R: What/Why/How at GMRI
 
-## What is R/Rstudio (now posit?) 
+## Before we start:
+
+1.  Create a folder somewhere on your computer that you will be able to easily find in half an hour and name it **"Intro_to_R"**
+
+2.  Put the **"Intro_to_R-Week1_Data.Rmd"** file and **"Data"** folder that we shared with you into that folder
+
+## What is R/Rstudio (now posit?)
 
 **R:**
 
@@ -61,16 +67,15 @@ knit: (function(input, ...) {rmarkdown::render(input)})
 
     -   Self-empowerment (I can solve, or teach myself X, Y, & Z)
 
-
->Learning to code is a knowledge investment; it *is* learning a new language, after all. But like learning any language, coding will open new doors.\
+> Learning to code is a knowledge investment; it *is* learning a new language, after all. But like learning any language, coding will open new doors.\
 
 ## How do we at GMRI use R?
 
 -   **We use R (and sometimes also python) to:**
 
     -   **Wrangle messy data**
-    
-    - Run statistical tests
+
+    -   Run statistical tests
 
     -   [Document our research analysis](https://github.com/adamkemberling/continuous_plankton_recorder)
 
@@ -78,7 +83,7 @@ knit: (function(input, ...) {rmarkdown::render(input)})
 
     -   [Build portfolio websites from scratch](https://ahart1.github.io/)
 
-    -   [Create maps of findings]()
+    -   Create maps of findings
 
     -   Automate simple tasks
 
@@ -116,9 +121,9 @@ There are three types of files that we typically work on using RStudio:
 
 2.  RMarkdown files end with ".Rmd" extensions and can include a mix of text, code chunks, and plots. RMarkdown files can only be opened in R Studio.Markdown and have simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
-3. Quarto files: 
+3.  Quarto markdown files end with ".qmd" extensions and have many of the same features as RMarkdown but lots of newer features like nice equation formatting (Latex behind the scenes) and citation management. Quarto also supports generating HTML and PDF outputs and includes additional features to generate presentations, format websites and more. For more details see: <https://quarto.org/>.
 
-All RMarkdown documents will have a YAML header, which tells Markdown how to format the output when you "Knit" the document (yarn button in top control bar) to the final format and contains information on the title, author, date, and output type at the top of the file. When you click the *Knit* button, a document will be generated that includes both written content as well as the output of any embedded R code chunks within the document. All other information in the file can be edited in one of two ways: 1) edit in the source editor (default view) or 2) switch to the visual editor mode (compass icon in upper right of RMarkdown panel) to edit more like a typical text editor.
+All RMarkdown and Quarto markdown documents will have a YAML header, which tells Markdown how to format the output when you "Knit" the document (yarn button in top control bar) to the final format and contains information on the title, author, date, and output type at the top of the file. When you click the *Knit* button, a document will be generated that includes both written content as well as the output of any embedded R code chunks within the document. All other information in the file can be edited in one of two ways: 1) edit in the source editor (default view) or 2) switch to the visual editor mode (compass icon in upper right of RMarkdown panel) to edit more like a typical text editor.
 
 1.  Use source editor view
 
@@ -138,7 +143,6 @@ All RMarkdown documents will have a YAML header, which tells Markdown how to for
 
             </div>
 
-
     -   You can also create bulleted or numbered lists:
 
         1.  Item
@@ -151,8 +155,6 @@ All RMarkdown documents will have a YAML header, which tells Markdown how to for
 
         3.  Item
 
-
-
     -   The *gray* areas are called "embedded code chunks." You can add a code chunk using the green + "Insert" button on the top control bar, or by typing three backticks (\`). You must also close to chunk with three backticks to run the chunk. The "r" in {brackets} at the top of the code chunks tells R Studio that you're writing in the R programming language (you can also write in other languages, but we won't worry about that for now).
 
     -   You can run the chunk by highlighting the code and pressing the "Run" button on the top control bar. You can also press the green arrow at the far right of the code chunk to run it.
@@ -163,7 +165,7 @@ All RMarkdown documents will have a YAML header, which tells Markdown how to for
 
     -   The bottom right panel has a few useful functionalities including allowing you to install packages (non-programmatically) and view which packages you already have installed (Packages Tab), search the help menu/documentation (Help Tab), and view plots you created in the code (Viewer Tab).
 
-    -   Base R has >2000 pre-loaded functions, so without doing anything else, you can actually do a lot in R! But there are thousands of packages that can also be installed and use in R, which gives you endless possibilities to explore.
+    -   Base R has \>2000 pre-loaded functions, so without doing anything else, you can actually do a lot in R! But there are thousands of packages that can also be installed and use in R, which gives you endless possibilities to explore.
 
 2.  Use visual editor view
 
@@ -241,6 +243,37 @@ There are [free online cheatsheets for each of the tidyverse packages](https://p
 
 `DataExplorer` is a package that provides useful summaries for data exploration which we will use later on.
 
+## A few notes on file structure
+
+In order to work in R you will need to know where on your computer your code and data is stored. All files are stored in a folder or directory on your computer.
+
+**Folders = Directories**
+
+Directories have a hierarchical structure usually with Users at the top, followed by all the user profiles your computer has, followed by high level folders like Downloads and Documents. Every file and folder has a file path associated with it that your computer (and R) use to find its location and all the data and code it contains.
+
+For example, at the beginning of this workshop we asked you to create a folder named "Intro_to_R" and to store the "Intro_to_R-Week1_Data.Rmd" file inside it. So the file path for this .Rmd file probably looks something like this:
+
+/Users/yourusername/Downloads/Intro_to_R/Intro_to_R-Week1_Data.Rmd
+
+The above file path indicates that the folder I created is a sub-folder or sub-directory of "Downloads" and it contains the .Rmd file. Essentially file paths are lists of folder names separated by "/" that tell your computer where to navigate to find a file.
+
+The working directory is the folder that R thinks you are working in. You can more easily reference files and data in your working directory by name without including the file path because R by default will look for these files in your working directory.
+
+Try checking your working directory using `getwd()`
+
+```{r}
+getwd()
+```
+
+If your working directory file path does not end in "Intro_to_R" then you will need to change the working directory so any data we generate in the rest of this workshop is saved in the folder you created. Try setting the working directory to "Intro_to_R" using `setwd()` and editing the code below to point R to the location of this folder. Then run `getwd()` to check that you were successful.
+
+```{r}
+setwd("/Users/yourusername/Intro_to_R")
+
+getwd()
+
+```
+
 ## Reading in data
 
 How data is stored determines how we can read it into R for use in our analysis. Often public data sets are available through R packages or as Rdata (files with ".rds" extension), while our own data sets are saved as Excel or CSV files. For one-time analyses and quick testing it is sometimes possible to copy and paste data into R. Here we outline paths to load some of the more common data formats that we use, but know that R has lots of options to load other types of data (e.g. large data files are often pulled from a SQL databases and climate data is often stored as a NetCDF file).
@@ -248,22 +281,6 @@ How data is stored determines how we can read it into R for use in our analysis.
 -   Use the `<-` to assign something to an object that will be saved in your environment, this is equivalent to `=` in R but people get defensive about this so it is best to do what feels right for you and try not to debate it with others.
 
 -   You will need to provide the full file path for CSV, Rdata, and Excel files whose data you want to load (e.g. "/Users/yourusername/folderwithdata/data.csv" instead of "data.csv"). The exception is when data you want to load is in your current working directory (i.e. the folder that RStudio is working in).
-
-Before you start loading data check your current working directory using `getwd()`:
-
-```{r}
-getwd()
-```
-
-Use `setwd()` to change your working directory to the location where your data is stored:
-
-```{r}
-#setwd("/Users/yourusername/folderwithdata")
-
-```{r, eval=FALSE}
-setwd("/Users/yourusername/folderwithdata")
-
-```
 
 ### Load data by copying and pasting (use `datapasta` package)
 
@@ -357,22 +374,23 @@ data.table::data.table(
 
 ### Load data from a CSV (.csv) file
 
+First we need to save some data from the palmerpenguins R package as a .csv file, try editing the file path below to point to your "Intro_to_R" folder.
+
 ```{r}
 library(palmerpenguins)
-write.csv(penguins, here::here("Intro_to_R/Data","penguins_data.R"))
+write.csv(penguins, "/Users/yourusername/Downlowads/Intro_to_R/Data","penguins_data.csv")
 ```
 
+HINT: If you encountered the error "No such file or directory" ask yourself the following:
+
+-   Do all folders in the file path exist?
+
+-   Did you spell all of the folders and file names correctly?
 
 ```{r}
 
 library(readr) # If the readr package is not loaded, uncomment and run this line of code
 penguinsCSV <- read_csv("Data/penguins_data.csv")
-
-# library(readr) # If the readr package is not loaded, uncomment and run this line of code
-penguinsCSV <- read_csv(here::here("Intro_to_R", "Data/penguins_data.csv"))
-
-
-
 ```
 
 The text below the code gives you information about what happened when you ran the code. Sometimes you'll get an error or warning message, but in this case, the output is telling you what variable types it assigned to each column.
@@ -392,17 +410,17 @@ R Markdown gives you a preview of the dataset and allows you to look through the
 # install.packages("readxl")
 # library("readxl") # Uncomment if package not already loaded
 
-sheet1 <- readxl::read_excel(here::here("Intro_to_R/Data/testExcel.xlsx"), sheet = 1) # Pick sheet by number order
+sheet1 <- readxl::read_excel("/Users/yourusername/Intro_to_R/Data/testExcel.xlsx", sheet = 1) # Pick sheet by number order
 sheet1
 
-sheet2 <- readxl::read_excel(here::here("Intro_to_R/Data/testExcel.xlsx"), sheet = "Is-it-a-fish") # Pick sheet by name
+sheet2 <- readxl::read_excel("/Users/yourusername/Intro_to_R/Data/testExcel.xlsx", sheet = "Is-it-a-fish") # Pick sheet by name
 sheet2
 ```
 
 ### Load data from an RData (.rds) file
 
 ```{r}
-practice <- readRDS(file = here::here("Intro_to_R/Data/testRData.rds"))
+practice <- readRDS(file = "/Users/yourusername/Intro_to_R/Data/testRData.rds")
 practice # Print the data you loaded to screen
 ```
 
@@ -579,7 +597,7 @@ my_df[1,1]
 Rows using brackets
 
 ```{r}
-# access row 1 in a dataframe (number goes after the comma)
+# access row 1 in a dataframe (number goes before the comma)
 my_df[1,]
 
 ```
@@ -593,7 +611,7 @@ my_df[,1]
 my_df[,"Org"] 
 ```
 
-You can also access columns by name rather than number by using the dollar sign indexing. If you type a dataframe's name followed by a \$, R will suggest the column names. Because rows aren't named, you can do the same thing for them.
+You can also access columns by name rather than number by using the dollar sign indexing. If you type a dataframe's name followed by a \$, R will suggest the column names. Because rows aren't named, you can't do the same thing for them.
 
 ```{r}
 my_df$Org
