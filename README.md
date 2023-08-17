@@ -44,8 +44,8 @@ Beginning on April 7, 2022 this group will meet the first Thursday of each month
 * 03/03/23: Child documents in Rmarkdown - Jerelle
 * 04/06/23: Reverse engineering figures - Miguel
 * 05/04/23: Google Cloud & Google compute engine R - Andrew: [profvis tool for visualizing computation time across different pieces of code, good for Shiny app tuning](https://rstudio.github.io/profvis/), Docker [example from Andrew here](https://github.com/aallyn/GMRI_Rocker), 
-* 06/01/23: Group discussion of lab manual
-* 07/06/23: Tips & tricks
+* 06/01/23: Websites! - Amanda
+* 07/06/23: Change point analysis - Jamie, Miguel, Kanae
 * 08/03/23: Debugging - Jerelle
 * 09/07/23: TBD
 * 10/05/23: TBD
